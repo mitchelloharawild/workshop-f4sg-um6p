@@ -1,143 +1,311 @@
 [
   {
-    "objectID": "sessions/template.html",
-    "href": "sessions/template.html",
-    "title": "{{title}}",
-    "section": "",
-    "text": "View slides in full screen"
-  },
-  {
-    "objectID": "sessions/template.html#lab-sessions",
-    "href": "sessions/template.html#lab-sessions",
-    "title": "{{title}}",
-    "section": "Lab sessions",
-    "text": "Lab sessions"
-  },
-  {
-    "objectID": "sessions/day2/09b_break.html",
-    "href": "sessions/day2/09b_break.html",
-    "title": "Coffee Break",
-    "section": "",
-    "text": "Time for a coffee break!\nFeel free to ask me some questions, or simply enjoy the break."
-  },
-  {
-    "objectID": "sessions/day2/08_arima.html",
-    "href": "sessions/day2/08_arima.html",
-    "title": "ARIMA models",
-    "section": "",
-    "text": "View slides in full screen"
-  },
-  {
-    "objectID": "sessions/day2/08_arima.html#lab-sessions",
-    "href": "sessions/day2/08_arima.html#lab-sessions",
-    "title": "ARIMA models",
-    "section": "Lab sessions",
-    "text": "Lab sessions\n\nLab Session 16\nFor the United States GDP data (from global_economy):\n\nFit a suitable ARIMA model for the logged data.\nProduce forecasts of your fitted model. Do the forecasts look reasonable?\n\n\n\nLab Session 17\nFor the Australian tourism data (from tourism):\n\nFit a suitable ARIMA model for all data.\nProduce forecasts of your fitted models.\nCheck the forecasts for the “Snowy Mountains” and “Melbourne” regions. Do they look reasonable?"
-  },
-  {
-    "objectID": "sessions/day2/07_ets.html",
-    "href": "sessions/day2/07_ets.html",
-    "title": "Exponential smoothing",
-    "section": "",
-    "text": "View slides in full screen"
-  },
-  {
-    "objectID": "sessions/day2/07_ets.html#lab-sessions",
-    "href": "sessions/day2/07_ets.html#lab-sessions",
-    "title": "Exponential smoothing",
-    "section": "Lab sessions",
-    "text": "Lab sessions\n\nLab Session 14\nTry forecasting the Chinese GDP from the global_economy data set using an ETS model.\nExperiment with the various options in the ETS() function to see how much the forecasts change with damped trend, or with a Box-Cox transformation. Try to develop an intuition of what each is doing to the forecasts.\n[Hint: use h=20 when forecasting, so you can clearly see the differences between the various options when plotting the forecasts.]\n\n\nLab Session 15\nFind an ETS model for the Gas data from aus_production and forecast the next few years.\n\nWhy is multiplicative seasonality necessary here?\nExperiment with making the trend damped. Does it improve the forecasts?"
-  },
-  {
-    "objectID": "sessions/day2/06_forecasting.html",
-    "href": "sessions/day2/06_forecasting.html",
-    "title": "Introduction to forecasting",
-    "section": "",
-    "text": "View slides in full screen"
-  },
-  {
-    "objectID": "sessions/day2/06_forecasting.html#lab-sessions",
-    "href": "sessions/day2/06_forecasting.html#lab-sessions",
-    "title": "Introduction to forecasting",
-    "section": "Lab sessions",
-    "text": "Lab sessions\n\nLab Session 11\n\nProduce forecasts using an appropriate benchmark method for household wealth (hh_budget). Plot the results using autoplot().\nProduce forecasts using an appropriate benchmark method for Australian takeaway food turnover (aus_retail). Plot the results using autoplot().\n\n\n\nLab Session 12\n\nCompute seasonal naïve forecasts for quarterly Australian beer production from 1992.\nTest if the residuals are white noise. What do you conclude?\n\n\n\nLab Session 13\n\nCreate a training set for household wealth (hh_budget) by withholding the last four years as a test set.\nFit all the appropriate benchmark methods to the training set and forecast the periods covered by the test set.\nCompute the accuracy of your forecasts. Which method does best?\nRepeat the exercise using the Australian takeaway food turnover data (aus_retail) with a test set of four years."
-  },
-  {
-    "objectID": "sessions/day1/04b_break.html",
-    "href": "sessions/day1/04b_break.html",
-    "title": "Coffee Break",
-    "section": "",
-    "text": "Time for a coffee break!\nFeel free to ask me some questions, or simply enjoy the break."
-  },
-  {
-    "objectID": "sessions/day1/03_transformations.html",
-    "href": "sessions/day1/03_transformations.html",
-    "title": "Transformations",
-    "section": "",
-    "text": "View slides in full screen"
-  },
-  {
-    "objectID": "sessions/day1/03_transformations.html#lab-sessions",
-    "href": "sessions/day1/03_transformations.html#lab-sessions",
-    "title": "Transformations",
-    "section": "Lab sessions",
-    "text": "Lab sessions\n\nLab Session 6\nConsider the GDP information in global_economy. Plot the GDP per capita for each country over time. Which country has the highest GDP per capita? How has this changed over time?\n\n\nLab Session 7\n\nFor the following series, find an appropriate Box-Cox transformation in order to stabilise the variance.\n\nUnited States GDP from global_economy\nSlaughter of Victorian “Bulls, bullocks and steers” in aus_livestock\nVictorian Electricity Demand from vic_elec.\nGas production from aus_production\n\nWhy is a Box-Cox transformation unhelpful for the canadian_gas data?"
-  },
-  {
-    "objectID": "sessions/day1/02_graphics.html",
-    "href": "sessions/day1/02_graphics.html",
-    "title": "Time series graphics",
-    "section": "",
-    "text": "View slides in full screen"
-  },
-  {
-    "objectID": "sessions/day1/02_graphics.html#lab-sessions",
-    "href": "sessions/day1/02_graphics.html#lab-sessions",
-    "title": "Time series graphics",
-    "section": "Lab sessions",
-    "text": "Lab sessions\n\nLab Session 3\n\nLook at the quarterly tourism data for the Snowy Mountains\nsnowy &lt;- tourism |&gt; filter(Region == \"Snowy Mountains\")\n\nUse autoplot(), gg_season() and gg_subseries() to explore the data.\nWhat do you learn?\n\nProduce a calendar plot for the pedestrian data from one location and one year.\n\n\n\nLab Session 4\nWe have introduced the following functions: gg_lag and ACF. Use these functions to explore the four time series: Bricks from aus_production, Lynx from pelt, Close price of Amazon from gafa_stock, Demand from vic_elec. Can you spot any seasonality, cyclicity and trend? What do you learn about the series?\n\n\nLab Session 5\nYou can compute the daily changes in the Google stock price in 2018 using\n\ndgoog &lt;- gafa_stock |&gt;\n  filter(Symbol == \"GOOG\", year(Date) &gt;= 2018) |&gt;\n  mutate(trading_day = row_number()) |&gt;\n  update_tsibble(index=trading_day, regular=TRUE) |&gt;\n  mutate(diff = difference(Close))\n\nDoes diff look like white noise?"
-  },
-  {
-    "objectID": "sessions/day1/01_tsibble.html",
-    "href": "sessions/day1/01_tsibble.html",
-    "title": "Introduction to tsibbles",
-    "section": "",
-    "text": "View slides in full screen"
-  },
-  {
-    "objectID": "sessions/day1/01_tsibble.html#lab-sessions",
-    "href": "sessions/day1/01_tsibble.html#lab-sessions",
-    "title": "Introduction to tsibbles",
-    "section": "Lab sessions",
-    "text": "Lab sessions\n\nLab Session 1\n\nDownload tourism.xlsx from http://robjhyndman.com/data/tourism.xlsx, and read it into R using read_excel() from the readxl package.\nCreate a tsibble which is identical to the tourism tsibble from the tsibble package.\nFind what combination of Region and Purpose had the maximum number of overnight trips on average.\nCreate a new tsibble which combines the Purposes and Regions, and just has total trips by State.\n\n\n\nLab Session 2\n\nCreate time plots of the following four time series: Bricks from aus_production, Lynx from pelt, Close from gafa_stock, Demand from vic_elec.\nUse help() to find out about the data in each series.\nFor the last plot, modify the axis labels and title."
-  },
-  {
-    "objectID": "sessions/break.html",
-    "href": "sessions/break.html",
-    "title": "Coffee Break",
-    "section": "",
-    "text": "Time for a coffee break!\nFeel free to ask me some questions, or simply enjoy the break."
-  },
-  {
-    "objectID": "license.html",
-    "href": "license.html",
-    "title": "License",
-    "section": "",
-    "text": "This work is licensed under a Creative Commons Attribution 4.0 International License."
-  },
-  {
-    "objectID": "feedback.html#feedback",
-    "href": "feedback.html#feedback",
+    "objectID": "materials/graphics/slides.html#section",
+    "href": "materials/graphics/slides.html#section",
     "title": "Tidy time series & forecasting in R",
-    "section": "Feedback",
-    "text": "Feedback"
+    "section": "",
+    "text": "Tidy time series analysis and forecasting\n\n\nTime series patterns\n\n\n20th June 2024 @ UM6P F4SG\n\nMitchell O’Hara-Wild, Nectric\n\n\n\n\n\n\n\nUseful links\n\n\n social.mitchelloharawild.com\n workshop.nectric.com.au/f4sg-um6p/\n mitchelloharawild/workshop-f4sg-um6p"
+  },
+  {
+    "objectID": "materials/graphics/slides.html#section-1",
+    "href": "materials/graphics/slides.html#section-1",
+    "title": "Tidy time series & forecasting in R",
+    "section": "",
+    "text": "Visualising time series\nTime series visualisation helps us identify time series patterns.\nThese patterns include:\n\ntrends\nseasonalities\ncycles\ncovariates\nevents\n\nThey also help identify anomalies/outliers.\n\n\n:::"
+  },
+  {
+    "objectID": "materials/graphics/slides.html#section-2",
+    "href": "materials/graphics/slides.html#section-2",
+    "title": "Tidy time series & forecasting in R",
+    "section": "",
+    "text": "Time plots\n\n\nThe most common time series graphic is the “time plot”, created with autoplot().\n\npbs_total &lt;- PBS |&gt;\n  summarise(Scripts = sum(Scripts), Cost = sum(Cost))\npbs_total |&gt;\n  autoplot(Scripts)"
+  },
+  {
+    "objectID": "materials/graphics/slides.html#section-3",
+    "href": "materials/graphics/slides.html#section-3",
+    "title": "Tidy time series & forecasting in R",
+    "section": "",
+    "text": "Time plots\n\n\nTime plots show measurements on the y-axis with time on the x-axis.\nThey help identify long term patterns such as:\n\ntrends\nseasonality\nanomalies\n\nThey can help tell the story of the data.\n\n\n\n\n\n\n\n\n\nYour turn\n\n\nUse autoplot() to create time plots for the measurements in aus_production."
+  },
+  {
+    "objectID": "materials/graphics/slides.html#section-4",
+    "href": "materials/graphics/slides.html#section-4",
+    "title": "Tidy time series & forecasting in R",
+    "section": "",
+    "text": "Calendar plots\n\n\nA special type of time plot uses calendars.\n\nlibrary(sugrrants)\nvic_elec |&gt;\n  filter(year(Date) == 2014) |&gt;\n  mutate(Hour = hour(Time)) |&gt;\n  frame_calendar(x = Hour, y = Demand, date = Date, nrow = 4) |&gt;\n  ggplot(aes(x = .Hour, y = .Demand, group = Date)) +\n  geom_line() -&gt; p1\nprettify(p1, size = 3, label.padding = unit(0.15, \"lines\"))"
+  },
+  {
+    "objectID": "materials/graphics/slides.html#section-5",
+    "href": "materials/graphics/slides.html#section-5",
+    "title": "Tidy time series & forecasting in R",
+    "section": "",
+    "text": "Calendar plots\n\n\nCalendar plots are especially useful for identifying daily changes in sub-daily data.\nExamples include:\n\npublic holidays\nnotable events.\n\n\n\n\n\n\n\n\n\n\nYour turn\n\n\nCreate a calendar plot for the number of pedestrians outside Southern Cross Station in 2016."
+  },
+  {
+    "objectID": "materials/graphics/slides.html#section-6",
+    "href": "materials/graphics/slides.html#section-6",
+    "title": "Tidy time series & forecasting in R",
+    "section": "",
+    "text": "Scatter plots\n\n\nCross-sectional visualisation can also be used to better understand time series.\n\npbs_total |&gt;\n  ggplot(aes(x = Scripts, y = Cost)) + \n  geom_point()\n\n\n\n\n\n\n\n\n\n\n\n\n\n:::"
+  },
+  {
+    "objectID": "materials/graphics/slides.html#section-7",
+    "href": "materials/graphics/slides.html#section-7",
+    "title": "Tidy time series & forecasting in R",
+    "section": "",
+    "text": "Scatter plots\n\n\nScatter plots for time series don’t use time in any way for the visualisation. It compares two measurements, one on the x and y-axis.\nThey help identify relationships between variables, such as:\n\nlinearity\ndirection\nstrength\n\n\n\n\n\n\n\n\n\n\nYour turn\n\n\nUse scatter plots to explore the relationships between measurements in aus_production.\n\n\n\n\n\n:::"
+  },
+  {
+    "objectID": "materials/graphics/slides.html#section-8",
+    "href": "materials/graphics/slides.html#section-8",
+    "title": "Tidy time series & forecasting in R",
+    "section": "",
+    "text": "Seasonal plots\n\n\nThe gg_season() plots help identify peaks and troughs in seasonal patterns.\n\npbs_total |&gt;\n  gg_season(Scripts)"
+  },
+  {
+    "objectID": "materials/graphics/slides.html#section-9",
+    "href": "materials/graphics/slides.html#section-9",
+    "title": "Tidy time series & forecasting in R",
+    "section": "",
+    "text": "Seasonal plots\n\n\nSeasonal plots show measurements on the y-axis with seasons on the x-axis and seasonal periods as colour.\nThey help identify details in seasonal patterns such as:\n\npeaks\ntroughs\n\n\n\n\n\n\n\n\n\n\nYour turn\n\n\nUse gg_season() to identify the nature of seasonal patterns in aus_production."
+  },
+  {
+    "objectID": "materials/graphics/slides.html#section-10",
+    "href": "materials/graphics/slides.html#section-10",
+    "title": "Tidy time series & forecasting in R",
+    "section": "",
+    "text": "Seasonal sub-series plots\n\n\nThe gg_subseries() plots help identify changes in seasonal patterns.\n\npbs_total |&gt;\n  gg_subseries(Scripts)\n\n\n\n\n\n\n\n\n\n\n\n\n\n:::"
+  },
+  {
+    "objectID": "materials/graphics/slides.html#section-11",
+    "href": "materials/graphics/slides.html#section-11",
+    "title": "Tidy time series & forecasting in R",
+    "section": "",
+    "text": "Seasonal sub-series plots\n\n\nSeasonal plots show measurements on the y-axis with seasonal periods on the x-axis faceted by seasons. The blue line corresponds to the seasonal mean.\nThey help compare seasons, which is especially useful to see if and how the seasonal pattern changes over time.\n\n\n\n\n\n\n\n\n\nYour turn\n\n\nUse gg_subseries() to explore the seasonal consistency in aus_production."
+  },
+  {
+    "objectID": "materials/graphics/slides.html#section-12",
+    "href": "materials/graphics/slides.html#section-12",
+    "title": "Tidy time series & forecasting in R",
+    "section": "",
+    "text": "ACF plots\n\n\nThe ACF() |&gt; autoplot() plots identify all temporal patterns using autocorrelations.\n\npbs_total |&gt;\n  ACF(Scripts) |&gt; \n  autoplot()\n\n\n\n\n\n\n\n\n\n\n\n\n\n:::"
+  },
+  {
+    "objectID": "materials/graphics/slides.html#section-13",
+    "href": "materials/graphics/slides.html#section-13",
+    "title": "Tidy time series & forecasting in R",
+    "section": "",
+    "text": "ACF plots\n\n\nACF plots show autocorrelations on the y-axis, with the ACF lag on the x-axis.\nThe auto-correlation at lag \\(k\\) is:\n\\[r_k = \\text{cor}(y_t, y_{t-k}) = \\dfrac{\\sum(y_t - \\bar{y})(y_{t-k} - \\bar{y})}{\\sum(y_t - \\bar{y})^2}\\]\nACF plots show:\n\ntrend and unit roots via slow decay\nseasonality with peaks at seasonal periods\ncycles with increased correlation at cycle durations\n\n\n\n\n\n\n\n\n\n\nYour turn\n\n\nUse ACF() and autoplot() to identify patterns in aus_production.\n\n\n\n\n\n:::"
+  },
+  {
+    "objectID": "materials/graphics/slides.html#seasonal-or-cyclical",
+    "href": "materials/graphics/slides.html#seasonal-or-cyclical",
+    "title": "Tidy time series & forecasting in R",
+    "section": "Seasonal or Cyclical?",
+    "text": "Seasonal or Cyclical?\nThese common patterns are commonly confused, can you tell them apart?"
+  },
+  {
+    "objectID": "materials/graphics/slides.html#section-14",
+    "href": "materials/graphics/slides.html#section-14",
+    "title": "Tidy time series & forecasting in R",
+    "section": "",
+    "text": "White noise\n\nwn &lt;- tsibble(t = seq(36), y = rnorm(36), index = t)\nwn |&gt; autoplot(y)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDefinition\n\n\nWhite noise data is uncorrelated across time with zero mean and constant variance.\n(Technically, we require independence as well.)\n\n\n\n\n\n:::"
+  },
+  {
+    "objectID": "materials/graphics/slides.html#section-15",
+    "href": "materials/graphics/slides.html#section-15",
+    "title": "Tidy time series & forecasting in R",
+    "section": "",
+    "text": "White noise\nThe ACF is a useful way to identify if data is white noise. The blue dashed lines indicate 95% significance of the autocorrelation.\n\nwn |&gt; ACF(y) |&gt; autoplot()\n\n\n\n\n\n\n\n\n\n\n:::"
+  },
+  {
+    "objectID": "materials/graphics/slides.html#time-for-a-break",
+    "href": "materials/graphics/slides.html#time-for-a-break",
+    "title": "Tidy time series & forecasting in R",
+    "section": "⏰ Time for a break!",
+    "text": "⏰ Time for a break!\n\n\n\n\n\n\n\n\nUp next…\n\n\n\nSimplifying patterns with transformations,\nDecomposing data to separate patterns.\n\n\n\n\n\n\n\n\n\n\n\nUseful links\n\n\n social.mitchelloharawild.com\n workshop.nectric.com.au/f4sg-um6p/\n mitchelloharawild/workshop-f4sg-um6p"
+  },
+  {
+    "objectID": "materials/graphics/slides.html#unsplash-credits",
+    "href": "materials/graphics/slides.html#unsplash-credits",
+    "title": "Tidy time series & forecasting in R",
+    "section": "Unsplash credits",
+    "text": "Unsplash credits\n\n\n\n\n\n\n\nThanks to these Unsplash contributors for their photos"
+  },
+  {
+    "objectID": "materials/data/slides.html#section",
+    "href": "materials/data/slides.html#section",
+    "title": "Tidy time series & forecasting in R",
+    "section": "",
+    "text": "Tidy time series analysis and forecasting\n\n\nTime series data\n\n\n20th June 2024 @ UM6P F4SG\n\nMitchell O’Hara-Wild, Nectric\n\n\n\n\n\n\n\nUseful links\n\n\n social.mitchelloharawild.com\n workshop.nectric.com.au/f4sg-um6p/\n mitchelloharawild/workshop-f4sg-um6p"
+  },
+  {
+    "objectID": "materials/data/slides.html#section-1",
+    "href": "materials/data/slides.html#section-1",
+    "title": "Tidy time series & forecasting in R",
+    "section": "",
+    "text": "Forecasting for Social Good\nThis workshop is part of the F4SG initiative.\nSpecial thanks to:\n\nProfessor Bahman Rostami-Tabar for leading F4SG (https://www.f4sg.org/)\nUM6P for coordinating and hosting\nInternational Institute of Forecasters (IIF) for funding the training"
+  },
+  {
+    "objectID": "materials/data/slides.html#section-2",
+    "href": "materials/data/slides.html#section-2",
+    "title": "Tidy time series & forecasting in R",
+    "section": "",
+    "text": "🎯 Today’s goals\n\n\n\nLearn about time series data.\nVisualise common time series patterns.\nUse decomposition modelling to explore patterns.\nLook at lots of data using time series features\n\n\n\n\n\n\n\n\n🌻 Expectations\n\n\n\nAsk relevant questions any time, Q&A during breaks.\nParticipate in exercises.\nBe kind and respectful.\nMake mistakes and learn!"
+  },
+  {
+    "objectID": "materials/data/slides.html#section-3",
+    "href": "materials/data/slides.html#section-3",
+    "title": "Tidy time series & forecasting in R",
+    "section": "",
+    "text": "Mitchell O’Hara‑Wild\nMonash + Nectric\n @mitchelloharawild\n @mitchelloharawild\n\n👋 Welcome, who am I?\n\n🦘 From Australia! Sorry for my accent!\n🎓 PhD candidate at Monash University\n📊 Data consulting and workshops at Nectric\n📈 Specialised in time series analysis\n📦 Develops R packages (fable, vitae, etc.)\n🤒 Produced COVID-19 forecasts for Australia\n🤖 DIYs IoT devices for home automation\n🌱 Permaculturist (🐝, 🐣, 🍄, 🌞)"
+  },
+  {
+    "objectID": "materials/data/slides.html#section-4",
+    "href": "materials/data/slides.html#section-4",
+    "title": "Tidy time series & forecasting in R",
+    "section": "",
+    "text": "You!\nUM6P\n\n🙋 Hi, who are you?\nHands up if…\n\n\n🇲🇦 You live in Morocco\n📊 You’ve analysed data\n📈 You’ve worked with time series data before\n🔮 You know what a forecast is\n🧑‍💻 You’ve used R before"
+  },
+  {
+    "objectID": "materials/data/slides.html#section-5",
+    "href": "materials/data/slides.html#section-5",
+    "title": "Tidy time series & forecasting in R",
+    "section": "",
+    "text": "Tidy time series analysis\nThis workshop is about tidy time series in R.\n\nWe’ll be using these packages!\n\n\n\n\n\n\n\n\n\nInstall them all with install.packages(\"fpp3\")"
+  },
+  {
+    "objectID": "materials/data/slides.html#section-6",
+    "href": "materials/data/slides.html#section-6",
+    "title": "Tidy time series & forecasting in R",
+    "section": "",
+    "text": "Tidy time series packages\n# Data manipulation\nlibrary(dplyr)\n# Plotting functions\nlibrary(ggplot2)\n# Time and date manipulation\nlibrary(lubridate)\n# Time series class\nlibrary(tsibble)\n# Tidy time series data\nlibrary(tsibbledata)\n# Time series graphics and statistics\nlibrary(feasts)\n# Forecasting functions\nlibrary(fable)\n\n# All of the above\nlibrary(fpp3)"
+  },
+  {
+    "objectID": "materials/data/slides.html#section-7",
+    "href": "materials/data/slides.html#section-7",
+    "title": "Tidy time series & forecasting in R",
+    "section": "",
+    "text": "Design of the forecast package\n\n\n\n\n\nForecasting individual time series\nRegular and infrequent observations (monthly, quarterly or annually)\nPoint forecasts and intervals\nConsistent with ts models\n\n\n\n\nDesign of the fable package\n\n\n\n\n\nForecasting many time series\nObservations at any time (sub-daily, irregular, monthly, etc.)\nForecast distributions\nConsistent with the tidyverse"
+  },
+  {
+    "objectID": "materials/data/slides.html#section-8",
+    "href": "materials/data/slides.html#section-8",
+    "title": "Tidy time series & forecasting in R",
+    "section": "",
+    "text": "Time series data\n\nFour-yearly Olympic winning times\nAnnual Google profits\nQuarterly Australian beer production\nMonthly pharmaceutical subsidies\nWeekly retail sales\nDaily COVID-19 infections\nHourly electricity demand\nMinutely blood glucose measurements\nTime-stamped stock transaction data"
+  },
+  {
+    "objectID": "materials/data/slides.html#section-9",
+    "href": "materials/data/slides.html#section-9",
+    "title": "Tidy time series & forecasting in R",
+    "section": "",
+    "text": "Time series data\nComes in all shapes and sizes!\nLike all data, we hope it’s tidy 🧹\n\n\n\n\n\n\n\nAll time series data contain…\n\n\n\nThe time of the observation (index)\nOne or more observations (measurements)\n\n\nSome datasets have identifying metadata,\n\nIdentifying variables for the series (key)"
+  },
+  {
+    "objectID": "materials/data/slides.html#section-10",
+    "href": "materials/data/slides.html#section-10",
+    "title": "Tidy time series & forecasting in R",
+    "section": "",
+    "text": "The tsibble data format\n\nA tsibble is a tibble for time series!\nThe quarterly visitors to Australia are found in the tourism dataset.\n\nlibrary(fpp3)\ntourism\n\n# A tsibble: 24,320 x 5 [1Q]\n# Key:       Region, State, Purpose [304]\n   Quarter Region   State           Purpose  Trips\n     &lt;qtr&gt; &lt;chr&gt;    &lt;chr&gt;           &lt;chr&gt;    &lt;dbl&gt;\n 1 1998 Q1 Adelaide South Australia Business  135.\n 2 1998 Q2 Adelaide South Australia Business  110.\n 3 1998 Q3 Adelaide South Australia Business  166.\n 4 1998 Q4 Adelaide South Australia Business  127.\n 5 1999 Q1 Adelaide South Australia Business  137.\n 6 1999 Q2 Adelaide South Australia Business  200.\n 7 1999 Q3 Adelaide South Australia Business  169.\n 8 1999 Q4 Adelaide South Australia Business  134.\n 9 2000 Q1 Adelaide South Australia Business  154.\n10 2000 Q2 Adelaide South Australia Business  169.\n# i 24,310 more rows"
+  },
+  {
+    "objectID": "materials/data/slides.html#section-11",
+    "href": "materials/data/slides.html#section-11",
+    "title": "Tidy time series & forecasting in R",
+    "section": "",
+    "text": "# A tsibble: 24,320 x 5 [1Q]\n# Key:       Region, State, Purpose [304]\n   Quarter Region   State           Purpose  Trips\n     &lt;qtr&gt; &lt;chr&gt;    &lt;chr&gt;           &lt;chr&gt;    &lt;dbl&gt;\n 1 1998 Q1 Adelaide South Australia Business  135.\n 2 1998 Q2 Adelaide South Australia Business  110.\n 3 1998 Q3 Adelaide South Australia Business  166.\n 4 1998 Q4 Adelaide South Australia Business  127.\n 5 1999 Q1 Adelaide South Australia Business  137.\n 6 1999 Q2 Adelaide South Australia Business  200.\n 7 1999 Q3 Adelaide South Australia Business  169.\n 8 1999 Q4 Adelaide South Australia Business  134.\n 9 2000 Q1 Adelaide South Australia Business  154.\n10 2000 Q2 Adelaide South Australia Business  169.\n# i 24,310 more rows\n\n\n\n\n\n\n\n\nColumn types\n\n\nIn this dataset, the column types are:\n\nindex variable: Quarter\nkey variable(s): Region, State, and Purpose\nmeasured variable(s): Trips"
+  },
+  {
+    "objectID": "materials/data/slides.html#section-12",
+    "href": "materials/data/slides.html#section-12",
+    "title": "Tidy time series & forecasting in R",
+    "section": "",
+    "text": "pedestrian\n\n# A tsibble: 66,037 x 5 [1h] &lt;Australia/Melbourne&gt;\n# Key:       Sensor [4]\n   Sensor         Date_Time           Date        Time Count\n   &lt;chr&gt;          &lt;dttm&gt;              &lt;date&gt;     &lt;int&gt; &lt;int&gt;\n 1 Birrarung Marr 2015-01-01 00:00:00 2015-01-01     0  1630\n 2 Birrarung Marr 2015-01-01 01:00:00 2015-01-01     1   826\n 3 Birrarung Marr 2015-01-01 02:00:00 2015-01-01     2   567\n 4 Birrarung Marr 2015-01-01 03:00:00 2015-01-01     3   264\n 5 Birrarung Marr 2015-01-01 04:00:00 2015-01-01     4   139\n 6 Birrarung Marr 2015-01-01 05:00:00 2015-01-01     5    77\n 7 Birrarung Marr 2015-01-01 06:00:00 2015-01-01     6    44\n 8 Birrarung Marr 2015-01-01 07:00:00 2015-01-01     7    56\n 9 Birrarung Marr 2015-01-01 08:00:00 2015-01-01     8   113\n10 Birrarung Marr 2015-01-01 09:00:00 2015-01-01     9   166\n# i 66,027 more rows\n\n\n\n\n\n\n\n\nYour turn!\n\n\nIn this dataset, which columns are:\n\nindex variable(s)?\nkey variable(s)?\nmeasured variable(s)?"
+  },
+  {
+    "objectID": "materials/data/slides.html#section-13",
+    "href": "materials/data/slides.html#section-13",
+    "title": "Tidy time series & forecasting in R",
+    "section": "",
+    "text": "Representing time (the index)\nTime is surprisingly tricky to represent!\n\nfrequency\ngranularity\ntime zones\ncalendars\nleap years (and seconds?!)\nholidays\ncivil/absolute time\ntime periods"
+  },
+  {
+    "objectID": "materials/data/slides.html#section-14",
+    "href": "materials/data/slides.html#section-14",
+    "title": "Tidy time series & forecasting in R",
+    "section": "",
+    "text": "Representing time (the index)\nCommon time index variables can be created with these functions:\n\n\n\n\n\nFrequency\nFunction\n\n\n\n\nAnnual\nstart:end\n\n\nQuarterly\nyearquarter()\n\n\nMonthly\nyearmonth()\n\n\nWeekly\nyearweek()\n\n\nDaily\nas_date(), ymd()\n\n\nSub-daily\nas_datetime()"
+  },
+  {
+    "objectID": "materials/data/slides.html#section-15",
+    "href": "materials/data/slides.html#section-15",
+    "title": "Tidy time series & forecasting in R",
+    "section": "",
+    "text": "Creating a tsibble\n\nTidy the data into a long format\nAppropriately class the time variable\nConvert to tsibble with as_tibble(), identifying the index and key variable(s).\n\nFor example:\ndata |&gt; \n  mutate(time = yearmonth(time)) |&gt; \n  as_tsibble(index = time, key = country)"
+  },
+  {
+    "objectID": "materials/data/slides.html#section-16",
+    "href": "materials/data/slides.html#section-16",
+    "title": "Tidy time series & forecasting in R",
+    "section": "",
+    "text": "Creating a tsibble: PBS\nThe Pharmaceutical Benefits Scheme (PBS) is the Australian drugs subsidy scheme.\n\nMany drugs bought from pharmacies are subsidised to allow more equitable access to modern drugs.\nThe cost to government is determined by the number and types of drugs purchased. Currently nearly 1% of GDP.\nThe total cost is budgeted based on forecasts of drug usage."
+  },
+  {
+    "objectID": "materials/data/slides.html#section-17",
+    "href": "materials/data/slides.html#section-17",
+    "title": "Tidy time series & forecasting in R",
+    "section": "",
+    "text": "Creating a tsibble: PBS\n\n\n\n\n\n\nFollow along\n\n\nLet’s convert the PBS dataset into a tsibble.\n\nlibrary(fpp3)\nreadr::read_csv(\n  \"https://workshop.nectric.com.au/f4sg-um6p/data/pbs.csv\"\n)\n\n\n\n\n\n\n\n# A tibble: 67,596 x 9\n   Month      Concession   Type    ATC1  ATC1_desc ATC2  ATC2_desc Scripts  Cost\n   &lt;date&gt;     &lt;chr&gt;        &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt;       &lt;dbl&gt; &lt;dbl&gt;\n 1 1991-07-01 Concessional Co-pay~ A     Alimenta~ A01   STOMATOL~   18228 67877\n 2 1991-08-01 Concessional Co-pay~ A     Alimenta~ A01   STOMATOL~   15327 57011\n 3 1991-09-01 Concessional Co-pay~ A     Alimenta~ A01   STOMATOL~   14775 55020\n 4 1991-10-01 Concessional Co-pay~ A     Alimenta~ A01   STOMATOL~   15380 57222\n 5 1991-11-01 Concessional Co-pay~ A     Alimenta~ A01   STOMATOL~   14371 52120\n 6 1991-12-01 Concessional Co-pay~ A     Alimenta~ A01   STOMATOL~   15028 54299\n 7 1992-01-01 Concessional Co-pay~ A     Alimenta~ A01   STOMATOL~   11040 39753\n 8 1992-02-01 Concessional Co-pay~ A     Alimenta~ A01   STOMATOL~   15165 54405\n 9 1992-03-01 Concessional Co-pay~ A     Alimenta~ A01   STOMATOL~   16898 61108\n10 1992-04-01 Concessional Co-pay~ A     Alimenta~ A01   STOMATOL~   18141 65356\n# i 67,586 more rows"
+  },
+  {
+    "objectID": "materials/data/slides.html#section-18",
+    "href": "materials/data/slides.html#section-18",
+    "title": "Tidy time series & forecasting in R",
+    "section": "",
+    "text": "Creating a tsibble: PBS\n\n\n\n\n\n\nIndex variables\n\n\nCosts are measured monthly, and stored in what column?\nWe use yearmonth(Month) to appropriately class the Month column as monthly data\n\n\n\n\n\n\n\n\n\n\nKey variables\n\n\nCosts are disaggregated by drug type (ATC1 x15 / ATC2 84), concession category (x2) and patient type (x2), giving \\(84\\times2\\times2=336\\) time series.\n\n\n\n\n\n\n\n\n\n\n\nFollow along\n\n\nUse mutate() and as_tsibble() to convert this data into a valid tsibble."
+  },
+  {
+    "objectID": "materials/data/slides.html#section-19",
+    "href": "materials/data/slides.html#section-19",
+    "title": "Tidy time series & forecasting in R",
+    "section": "",
+    "text": "Manipulating time series data\nTidy time series data uses tidyverse tools!\n\n\n\n\n\n\nYour turn\n\n\nTry calculating the total monthly cost of “A10” prescriptions (ATC2 classification) in Australia with dplyr.\nHow do concessional subsidies compare to general subsidies?"
+  },
+  {
+    "objectID": "materials/data/slides.html#section-20",
+    "href": "materials/data/slides.html#section-20",
+    "title": "Tidy time series & forecasting in R",
+    "section": "",
+    "text": "Manipulating time series data\nHowever there are some differences when working with time…\nThe time index is always preserved (implicit group_by()).\n\n\n\n\n\n\nGrouping across time\n\n\nSometimes you want to summarise over time.\nSummarising over all of time is no longer a time series, so first convert to a tibble with as_tibble().\nTo re-index by a new variable, use index_by()."
+  },
+  {
+    "objectID": "materials/data/slides.html#section-21",
+    "href": "materials/data/slides.html#section-21",
+    "title": "Tidy time series & forecasting in R",
+    "section": "",
+    "text": "Manipulating time series data\n\n\n\n\n\n\nYour turn\n\n\nExplore the PBS dataset and create some useful summaries of the data, and some useful time series to report and forecast.\nSome suggestions:\n\nWhat is the most costly drug categories (ATC1) in Australia\nWhich specific drug category (ATC2) is dispensed the most?"
+  },
+  {
+    "objectID": "materials/data/slides.html#onto-the-next-topic",
+    "href": "materials/data/slides.html#onto-the-next-topic",
+    "title": "Tidy time series & forecasting in R",
+    "section": "⏰ Onto the next topic!",
+    "text": "⏰ Onto the next topic!\n\n\n\n\n\n\n\n\nUp next…\n\n\n\nUnderstanding time series patterns\nVisualising time series data\n\n\n\n\n\n\n\n\n\n\n\nUseful links\n\n\n social.mitchelloharawild.com\n workshop.nectric.com.au/f4sg-um6p/\n mitchelloharawild/workshop-f4sg-um6p"
+  },
+  {
+    "objectID": "materials/data/slides.html#unsplash-credits",
+    "href": "materials/data/slides.html#unsplash-credits",
+    "title": "Tidy time series & forecasting in R",
+    "section": "Unsplash credits",
+    "text": "Unsplash credits\n\n\n\n\n\n\n\nThanks to these Unsplash contributors for their photos"
   },
   {
     "objectID": "index.html#course-overview",
     "href": "index.html#course-overview",
     "title": "Tidy time series & forecasting in R",
     "section": "Course Overview",
-    "text": "Course Overview\nIt is common for organizations to collect huge amounts of data over time, and existing time series analysis tools are not always suitable to handle the scale, frequency and structure of the data collected. In this workshop, we will look at some packages and methods that have been developed to handle the analysis of large collections of time series.\nOn day 1, we will look at the tsibble data structure for flexibly managing collections of related time series. We will look at how to do data wrangling, data visualizations and exploratory data analysis. We will explore feature-based methods to explore time series data in high dimensions. A similar feature-based approach can be used to identify anomalous time series within a collection of time series, or to cluster or classify time series. Primary packages for day 1 will be tsibble, lubridate and feasts (along with the tidyverse of course).\nDay 2 will be about forecasting. We will look at some classical time series models and how they are automated in the fable package. We will look at creating ensemble forecasts and hybrid forecasts, as well as some new forecasting methods that have performed well in large-scale forecasting competitions. Finally, we will look at forecast reconciliation, allowing millions of time series to be forecast in a relatively short time while accounting for constraints on how the series are related.\nThis workshop is part of the F4SG initiative and is supported by the IIF. The workshop will run in-person at UM6P in Rabat, Morocco in June 2024."
+    "text": "Course Overview\nIt is common for organizations to collect huge amounts of data over time, and existing time series analysis tools are not always suitable to handle the scale, frequency and structure of the data collected. In this workshop, we will look at some packages and methods that have been developed to handle the analysis of large collections of time series.\nOn day 1, we will look at the tsibble data structure for flexibly managing collections of related time series. We will look at how to do data wrangling, data visualizations and exploratory data analysis. If time permits, we will explore feature-based methods to explore time series data in high dimensions. A similar feature-based approach can be used to identify anomalous time series within a collection of time series, or to cluster or classify time series. Primary packages for day 1 will be tsibble, lubridate and feasts (along with the tidyverse of course).\nDay 2 will be about forecasting. We will look at some classical time series models and how they are automated in the fable package. We will look at creating ensemble forecasts and hybrid forecasts, as well as some new forecasting methods that have performed well in large-scale forecasting competitions. Finally, we will look at forecast reconciliation, allowing millions of time series to be forecast in a relatively short time while accounting for constraints on how the series are related.\nThis workshop is part of the F4SG initiative and is supported by the IIF. The workshop will run in-person at UM6P in Rabat, Morocco in June 2024."
   },
   {
     "objectID": "index.html#learning-objectives",
@@ -168,115 +336,255 @@
     "text": "Required software\nTo be able to complete the exercises of this workshop, please install a suitable IDE (such as RStudio), a recent version of R (4.1+) and the following packages.\n\nTime series packages and extensions\n\nfpp3, sugrrants\n\ntidyverse packages and friends\n\ntidyverse, fpp3\n\n\nThe following code will install the main packages needed for the workshop.\ninstall.packages(c(\"tidyverse\",\"fpp3\", \"GGally\", \"sugrrants\"))\nPlease have the required software installed and pre-work completed before attending the workshop."
   },
   {
-    "objectID": "schedule.html",
-    "href": "schedule.html",
-    "title": "Schedule",
+    "objectID": "feedback.html#feedback",
+    "href": "feedback.html#feedback",
+    "title": "Tidy time series & forecasting in R",
+    "section": "Feedback",
+    "text": "Feedback"
+  },
+  {
+    "objectID": "license.html",
+    "href": "license.html",
+    "title": "License",
     "section": "",
-    "text": "Time\n\n\nSession\n\n\n\n\n\n\n\n\n\n09:00-09:30\n\n\nBackground\n\n\n\n\n\n\n\n09:30-10:30\n\n\nIntroduction to tsibbles\n\n\n\n\n\n\n\n10:30-11:00\n\n\nCoffee Break\n\n\n\n\n\n\n\n11:00-12:30\n\n\nTime series graphics\n\n\n\n\n\n\n\n12:30-13:30\n\n\nLunch Break\n\n\n\n\n\n\n\n13:30-14:15\n\n\nTransformations\n\n\n\n\n\n\n\n14:15-15:00\n\n\nSeasonality and trends\n\n\n\n\n\n\n\n15:00-15:30\n\n\nCoffee Break\n\n\n\n\n\n\n\n15:30-17:00\n\n\nTime series features\n\n\n\n\n\nNo matching items"
+    "text": "This work is licensed under a Creative Commons Attribution 4.0 International License."
   },
   {
-    "objectID": "schedule.html#day-1",
-    "href": "schedule.html#day-1",
-    "title": "Schedule",
+    "objectID": "materials/decomposition/slides.html#section",
+    "href": "materials/decomposition/slides.html#section",
+    "title": "Tidy time series & forecasting in R",
     "section": "",
-    "text": "Time\n\n\nSession\n\n\n\n\n\n\n\n\n\n09:00-09:30\n\n\nBackground\n\n\n\n\n\n\n\n09:30-10:30\n\n\nIntroduction to tsibbles\n\n\n\n\n\n\n\n10:30-11:00\n\n\nCoffee Break\n\n\n\n\n\n\n\n11:00-12:30\n\n\nTime series graphics\n\n\n\n\n\n\n\n12:30-13:30\n\n\nLunch Break\n\n\n\n\n\n\n\n13:30-14:15\n\n\nTransformations\n\n\n\n\n\n\n\n14:15-15:00\n\n\nSeasonality and trends\n\n\n\n\n\n\n\n15:00-15:30\n\n\nCoffee Break\n\n\n\n\n\n\n\n15:30-17:00\n\n\nTime series features\n\n\n\n\n\nNo matching items"
+    "text": "Tidy time series analysis and forecasting\n\n\nTransforming and decomposing time series patterns\n\n\n20th June 2024 @ UM6P F4SG\n\nMitchell O’Hara-Wild, Nectric\n\n\n\n\n\n\n\nUseful links\n\n\n social.mitchelloharawild.com\n workshop.nectric.com.au/f4sg-um6p/\n mitchelloharawild/workshop-f4sg-um6p"
   },
   {
-    "objectID": "schedule.html#day-2",
-    "href": "schedule.html#day-2",
-    "title": "Schedule",
-    "section": "Day 2",
-    "text": "Day 2\n\n\n\n\n\n\n\nTime\n\n\nSession\n\n\n\n\n\n\n\n\n\n09:00-10:30\n\n\nIntroduction to forecasting\n\n\n\n\n\n\n\n10:30-11:00\n\n\nCoffee Break\n\n\n\n\n\n\n\n11:00-12:30\n\n\nExponential smoothing\n\n\n\n\n\n\n\n12:30-13:30\n\n\nLunch Break\n\n\n\n\n\n\n\n13:30-14:15\n\n\nARIMA models\n\n\n\n\n\n\n\n14:15-15:00\n\n\nDynamic regression\n\n\n\n\n\n\n\n15:00-15:30\n\n\nCoffee Break\n\n\n\n\n\n\n\n15:30-17:00\n\n\nHierarchical forecasting\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "sessions/day1/00_intro.html",
-    "href": "sessions/day1/00_intro.html",
-    "title": "Background",
+    "objectID": "materials/decomposition/slides.html#section-1",
+    "href": "materials/decomposition/slides.html#section-1",
+    "title": "Tidy time series & forecasting in R",
     "section": "",
-    "text": "View slides in full screen"
+    "text": "Transformations of time series\nTransformations use used in time series to:\n\nReveal actual underlying patterns\nSimplify the data to make modelling easier\n\n\n\n\n\n\n\nYour turn\n\n\nWhat are some useful transformations that you’ve seen used on data before?\nCan you think of transformations that would be useful for time series?"
   },
   {
-    "objectID": "sessions/day1/01b_break.html",
-    "href": "sessions/day1/01b_break.html",
-    "title": "Coffee Break",
+    "objectID": "materials/decomposition/slides.html#section-2",
+    "href": "materials/decomposition/slides.html#section-2",
+    "title": "Tidy time series & forecasting in R",
     "section": "",
-    "text": "Time for a coffee break!\nFeel free to ask me some questions, or simply enjoy the break."
+    "text": "Population adjustment\n\nglobal_economy |&gt;\n  filter(Country == \"Australia\") |&gt;\n  autoplot(GDP)\n\n\n\n\n\n\n\n\nUseful in comparing populations of different size. Per capita adjustments are commonly used to compare GDP between countries."
   },
   {
-    "objectID": "sessions/day1/02b_break.html",
-    "href": "sessions/day1/02b_break.html",
-    "title": "Lunch Break",
+    "objectID": "materials/decomposition/slides.html#section-3",
+    "href": "materials/decomposition/slides.html#section-3",
+    "title": "Tidy time series & forecasting in R",
     "section": "",
-    "text": "Time for a lunch break!\nFeel free to ask me some questions, or simply enjoy the break."
+    "text": "Population adjustment\n\nglobal_economy |&gt;\n  filter(Country == \"Australia\") |&gt;\n  autoplot(GDP/Population)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nYour turn\n\n\nModify the code to look at the GDP of multiple countries with vastly different populations."
   },
   {
-    "objectID": "sessions/day1/04_decomposition.html",
-    "href": "sessions/day1/04_decomposition.html",
-    "title": "Seasonality and trends",
+    "objectID": "materials/decomposition/slides.html#section-4",
+    "href": "materials/decomposition/slides.html#section-4",
+    "title": "Tidy time series & forecasting in R",
     "section": "",
-    "text": "View slides in full screen"
+    "text": "Inflation adjustment\n\n\n\n\n\n\n\n\n\nUseful in comparing economic series with different rates of inflation. This can be useful in comparing growth of different time series."
   },
   {
-    "objectID": "sessions/day1/04_decomposition.html#lab-sessions",
-    "href": "sessions/day1/04_decomposition.html#lab-sessions",
-    "title": "Seasonality and trends",
-    "section": "Lab sessions",
-    "text": "Lab sessions\n\nLab Session 8\n\nProduce the following decomposition\ncanadian_gas |&gt;\n  STL(Volume ~ season(window=7) + trend(window=11)) |&gt;\n  autoplot()\nWhat happens as you change the values of the two window arguments?\nHow does the seasonal shape change over time? [Hint: Try plotting the seasonal component using gg_season.]\nCan you produce a plausible seasonally adjusted series? [Hint: season_adjust is one of the variables returned by STL.]"
-  },
-  {
-    "objectID": "sessions/day1/05_features.html",
-    "href": "sessions/day1/05_features.html",
-    "title": "Time series features",
+    "objectID": "materials/decomposition/slides.html#section-5",
+    "href": "materials/decomposition/slides.html#section-5",
+    "title": "Tidy time series & forecasting in R",
     "section": "",
-    "text": "View slides in full screen"
+    "text": "Calendar days\n\nas_tsibble(USAccDeaths) |&gt;\n  gg_season(value)\n\n\n\n\n\n\n\n\nSometimes seasonal patterns are driven by simply having different durations of time in each season."
   },
   {
-    "objectID": "sessions/day1/05_features.html#lab-sessions",
-    "href": "sessions/day1/05_features.html#lab-sessions",
-    "title": "Time series features",
-    "section": "Lab sessions",
-    "text": "Lab sessions\n\nLab Session 9\n\nUse GGally::ggpairs() to look at the relationships between the STL-based features. You might wish to change seasonal_peak_year and seasonal_trough_year to factors.\nWhich is the peak quarter for holidays in each state?\n\n\n\nLab Session 10\n\nUse a feature-based approach to look for outlying series in PBS.\nWhat is unusual about the series you identify as “outliers”."
-  },
-  {
-    "objectID": "sessions/day2/06b_break.html",
-    "href": "sessions/day2/06b_break.html",
-    "title": "Coffee Break",
+    "objectID": "materials/decomposition/slides.html#section-6",
+    "href": "materials/decomposition/slides.html#section-6",
+    "title": "Tidy time series & forecasting in R",
     "section": "",
-    "text": "Time for a coffee break!\nFeel free to ask me some questions, or simply enjoy the break."
+    "text": "Calendar days\n\nas_tsibble(USAccDeaths) |&gt;\n  gg_season(value/days_in_month(index))\n\n\n\n\n\n\n\n\nAdjusting to standardise this duration can simplify the pattern."
   },
   {
-    "objectID": "sessions/day2/07b_break.html",
-    "href": "sessions/day2/07b_break.html",
-    "title": "Lunch Break",
+    "objectID": "materials/decomposition/slides.html#section-7",
+    "href": "materials/decomposition/slides.html#section-7",
+    "title": "Tidy time series & forecasting in R",
     "section": "",
-    "text": "Time for a lunch break!\nFeel free to ask me some questions, or simply enjoy the break."
+    "text": "Calendar days\n\n\n\n\n\n\nYour turn\n\n\nAdjust for the number of days in each month for the total PBS scripts. How does the seasonal pattern change when the duration of each month is adjusted for?\n\n\n\n\nPBS |&gt;\n  summarise(Scripts = sum(Scripts))"
   },
   {
-    "objectID": "sessions/day2/09_dynreg.html",
-    "href": "sessions/day2/09_dynreg.html",
-    "title": "Dynamic regression",
+    "objectID": "materials/decomposition/slides.html#section-8",
+    "href": "materials/decomposition/slides.html#section-8",
+    "title": "Tidy time series & forecasting in R",
     "section": "",
-    "text": "View slides in full screen"
+    "text": "Mathematical transformations\nIf the data show different variation at different levels of the series, then a transformation can be useful.\n\n\n\n\n\n\nUseful transformations\n\n\nDenote original observations as \\(y_1,\\dots,y_n\\) and transformed observations as \\(w_1, \\dots, w_n\\).\n\nSquare root, \\(w_t = \\sqrt{y_t}\\)\nCube root, \\(w_t = \\sqrt[3]{y_t}\\)\nLogarithm, \\(w_t = \\text{log}(y_t)\\)\n\nLogarithms are particularly useful because they are more interpretable. Changes in a log value are relative (percent) changes on the original scale."
   },
   {
-    "objectID": "sessions/day2/09_dynreg.html#lab-sessions",
-    "href": "sessions/day2/09_dynreg.html#lab-sessions",
-    "title": "Dynamic regression",
-    "section": "Lab sessions",
-    "text": "Lab sessions\n\nLab Session 18\nRepeat the daily electricity example, but instead of using a quadratic function of temperature, use a piecewise linear function with the “knot” around 20 degrees Celsius (use predictors Temperature & Temp2). How can you optimize the choice of knot?\nThe data can be created as follows.\n\nvic_elec_daily &lt;- vic_elec |&gt;\n  filter(year(Time) == 2014) |&gt;\n  index_by(Date = date(Time)) |&gt;\n  summarise(\n    Demand = sum(Demand)/1e3,\n    Temperature = max(Temperature),\n    Holiday = any(Holiday)\n  ) |&gt;\n  mutate(\n    Temp2 = I(pmax(Temperature-20,0)),\n    Day_Type = case_when(\n      Holiday ~ \"Holiday\",\n      wday(Date) %in% 2:6 ~ \"Weekday\",\n      TRUE ~ \"Weekend\"\n    )\n  )\n\n\n\nLab Session 19\nRepeat Lab Session 18 but using all available data, and handling the annual seasonality using Fourier terms."
-  },
-  {
-    "objectID": "sessions/day2/10_hierarchical.html",
-    "href": "sessions/day2/10_hierarchical.html",
-    "title": "Hierarchical forecasting",
+    "objectID": "materials/decomposition/slides.html#section-9",
+    "href": "materials/decomposition/slides.html#section-9",
+    "title": "Tidy time series & forecasting in R",
     "section": "",
-    "text": "View slides in full screen"
+    "text": "Mathematical transformations\n\nfood &lt;- aus_retail |&gt;\n  filter(Industry == \"Food retailing\") |&gt;\n  summarise(Turnover = sum(Turnover))\nfood |&gt; autoplot(Turnover) +\n  labs(y = \"Turnover ($AUD)\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThe growing seasonal variance is known as ‘multiplicative’ seasonality. It is very common for time series to do this."
   },
   {
-    "objectID": "sessions/day2/10_hierarchical.html#lab-sessions",
-    "href": "sessions/day2/10_hierarchical.html#lab-sessions",
-    "title": "Hierarchical forecasting",
-    "section": "Lab sessions",
-    "text": "Lab sessions\n\nLab Session 20\n\nPrepare aggregations of the PBS data by Concession, Type, and ATC1.\nUse forecast reconciliation with the PBS data, using ETS, ARIMA and SNAIVE models, applied to all but the last 3 years of data.\nWhich type of model works best?\nDoes the reconciliation improve the forecast accuracy?\nWhy doesn’t the reconciliation make any difference to the SNAIVE forecasts?"
+    "objectID": "materials/decomposition/slides.html#section-10",
+    "href": "materials/decomposition/slides.html#section-10",
+    "title": "Tidy time series & forecasting in R",
+    "section": "",
+    "text": "Mathematical transformations\n\nfood |&gt; autoplot(log(Turnover)) +\n  labs(y = \"Log-Turnover ($AUD)\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThe variance in the seasonality is now regular."
+  },
+  {
+    "objectID": "materials/decomposition/slides.html#section-11",
+    "href": "materials/decomposition/slides.html#section-11",
+    "title": "Tidy time series & forecasting in R",
+    "section": "",
+    "text": "Box-Cox transformations\nEach of these transformations is close to a member of the family of Box-Cox transformations: \\[w_t = \\left\\{\\begin{array}{ll}\n        \\text{log}(y_t),      & \\quad \\lambda = 0; \\\\\n        (\\text{sign}(y_t)|y_t|^\\lambda-1)/\\lambda ,         & \\quad \\lambda \\ne 0.\n\\end{array}\\right.\\]\n\n\n\n\n\n\nCommon transformations\n\n\n\n\\(\\lambda=1\\): (No substantive transformation)\n\\(\\lambda=\\frac{1}{2}\\): (Square root plus linear transformation)\n\\(\\lambda=0\\): (Natural logarithm)\n\\(\\lambda=-1\\): (Inverse plus 1)"
+  },
+  {
+    "objectID": "materials/decomposition/slides.html#section-12",
+    "href": "materials/decomposition/slides.html#section-12",
+    "title": "Tidy time series & forecasting in R",
+    "section": "",
+    "text": "Box-Cox transformations\nThe \\(\\lambda\\) parameter can be automatically selected.\n\nfood |&gt;\n  features(Turnover, features = guerrero)\n\n# A tibble: 1 x 1\n  lambda_guerrero\n            &lt;dbl&gt;\n1          0.0895\n\n\n\n\nThis attempts to balance the seasonal fluctuations and random variation across the series.\nAlways check the results.\nA low value of \\(\\lambda\\) can give extremely large prediction intervals."
+  },
+  {
+    "objectID": "materials/decomposition/slides.html#section-13",
+    "href": "materials/decomposition/slides.html#section-13",
+    "title": "Tidy time series & forecasting in R",
+    "section": "",
+    "text": "Box-Cox transformations\n\nfood |&gt; autoplot(box_cox(Turnover, 0.0895)) +\n  labs(y = \"Box-Cox transformed turnover\")"
+  },
+  {
+    "objectID": "materials/decomposition/slides.html#section-14",
+    "href": "materials/decomposition/slides.html#section-14",
+    "title": "Tidy time series & forecasting in R",
+    "section": "",
+    "text": "Mathematical transformations\n\n\n\n\n\n\nUseful transformations\n\n\n\nOften no transformation needed.\nSimple transformations are easier to explain and work well enough.\nTransformations can have very large effect on forecasts.\nIf some data are zero or negative, then use \\(\\lambda&gt;0\\).\nlog1p() can also be useful for data with zeros.\nChoosing logs is a simple way to force forecasts to be positive\nTransformations must be reversed to obtain forecasts on the original scale. (Handled automatically by fable.)"
+  },
+  {
+    "objectID": "materials/decomposition/slides.html#section-15",
+    "href": "materials/decomposition/slides.html#section-15",
+    "title": "Tidy time series & forecasting in R",
+    "section": "",
+    "text": "Transformations\n\n\n\n\n\n\nYour turn\n\n\n\nFor the following series, find an appropriate transformation in order to simplify the patterns.\n\nUnited States GDP from global_economy\nSlaughter of Victorian “Bulls, bullocks and steers” in aus_livestock\nVictorian Electricity Demand from vic_elec.\nGas production from aus_production\n\nWhy is a Box-Cox transformation unhelpful for the canadian_gas data?"
+  },
+  {
+    "objectID": "materials/decomposition/slides.html#section-16",
+    "href": "materials/decomposition/slides.html#section-16",
+    "title": "Tidy time series & forecasting in R",
+    "section": "",
+    "text": "Decomposition\nDecomposition is the process of spliting a time series into components, usually consisting of patterns in the data.\nThis is achieved by modelling the patterns, then extracting the contribution of those patterns in the model."
+  },
+  {
+    "objectID": "materials/decomposition/slides.html#section-17",
+    "href": "materials/decomposition/slides.html#section-17",
+    "title": "Tidy time series & forecasting in R",
+    "section": "",
+    "text": "Decomposition\n\n\n\n\n\n\nAdditive decompositions\n\n\nToday we’ll learn about one useful type of decomposition: additive decomposition via STL.\nIt decomposes the:\n\nTrend-Cycle: aperiodic changes in level over time.\nSeasonality: periodic changes in level due to seasons (e.g., quarter of year, day of week, or hour of day).\nRemainder: unexplained changes not captured by other components.\n\n\\[y_t = S_t + T_t + R_t\\]\nwhere \\(y_t\\) is the data, \\(T_t\\) is the trend-cycle, \\(S_t\\) is the seasonality, and \\(R_t\\) is the remainder at time \\(t\\)."
+  },
+  {
+    "objectID": "materials/decomposition/slides.html#section-18",
+    "href": "materials/decomposition/slides.html#section-18",
+    "title": "Tidy time series & forecasting in R",
+    "section": "",
+    "text": "STL Decomposition\nSTL is decomposes trend and seasonality using localised regression (loess).\n\n\n\n\n\n\n\nA lot to like\n\n\n\nVery versatile and robust.\nTrend and seasonality can change over time.\nRate of change (smoothness) controlled by user.\nOptionally robust to outliers.\n\n\n\n\n\n\n\n\n\n\n\n\nSome limitations\n\n\n\nNo trading day or calendar adjustments.\nOnly decomposes additive patterns."
+  },
+  {
+    "objectID": "materials/decomposition/slides.html#section-19",
+    "href": "materials/decomposition/slides.html#section-19",
+    "title": "Tidy time series & forecasting in R",
+    "section": "",
+    "text": "Decomposing US employment\n\nus_retail_employment &lt;- us_employment |&gt;\n  filter(year(Month) &gt;= 1990, Title == \"Retail Trade\") |&gt;\n  select(-Series_ID)\nus_retail_employment\n\n# A tsibble: 357 x 3 [1M]\n      Month Title        Employed\n      &lt;mth&gt; &lt;chr&gt;           &lt;dbl&gt;\n 1 1990 Jan Retail Trade   13256.\n 2 1990 Feb Retail Trade   12966.\n 3 1990 Mar Retail Trade   12938.\n 4 1990 Apr Retail Trade   13012.\n 5 1990 May Retail Trade   13108.\n 6 1990 Jun Retail Trade   13183.\n 7 1990 Jul Retail Trade   13170.\n 8 1990 Aug Retail Trade   13160.\n 9 1990 Sep Retail Trade   13113.\n10 1990 Oct Retail Trade   13185.\n# i 347 more rows"
+  },
+  {
+    "objectID": "materials/decomposition/slides.html#section-20",
+    "href": "materials/decomposition/slides.html#section-20",
+    "title": "Tidy time series & forecasting in R",
+    "section": "",
+    "text": "Decomposing US employment\n\nus_retail_employment |&gt;\n  autoplot(Employed) +\n  labs(y = \"Persons (thousands)\", title = \"Total employment in US retail\")"
+  },
+  {
+    "objectID": "materials/decomposition/slides.html#section-21",
+    "href": "materials/decomposition/slides.html#section-21",
+    "title": "Tidy time series & forecasting in R",
+    "section": "",
+    "text": "Decomposing US employment\n\ndcmp &lt;- us_retail_employment |&gt;\n  model(stl = STL(Employed))\ndcmp\n\n# A mable: 1 x 1\n      stl\n  &lt;model&gt;\n1   &lt;STL&gt;\n\n\nThis is an STL model fitted to the data. It’s stored in a mable (model table), and we’ll be seeing a lot more of these next week."
+  },
+  {
+    "objectID": "materials/decomposition/slides.html#section-22",
+    "href": "materials/decomposition/slides.html#section-22",
+    "title": "Tidy time series & forecasting in R",
+    "section": "",
+    "text": "Decomposing US employment\n\ncomponents(dcmp)\n\n# A dable: 357 x 7 [1M]\n# Key:     .model [1]\n# :        Employed = trend + season_year + remainder\n   .model    Month Employed  trend season_year remainder season_adjust\n   &lt;chr&gt;     &lt;mth&gt;    &lt;dbl&gt;  &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;         &lt;dbl&gt;\n 1 stl    1990 Jan   13256. 13288.      -33.0      0.836        13289.\n 2 stl    1990 Feb   12966. 13269.     -258.     -44.6          13224.\n 3 stl    1990 Mar   12938. 13250.     -290.     -22.1          13228.\n 4 stl    1990 Apr   13012. 13231.     -220.       1.05         13232.\n 5 stl    1990 May   13108. 13211.     -114.      11.3          13223.\n 6 stl    1990 Jun   13183. 13192.      -24.3     15.5          13207.\n 7 stl    1990 Jul   13170. 13172.      -23.2     21.6          13193.\n 8 stl    1990 Aug   13160. 13151.       -9.52    17.8          13169.\n 9 stl    1990 Sep   13113. 13131.      -39.5     22.0          13153.\n10 stl    1990 Oct   13185. 13110.       61.6     13.2          13124.\n# i 347 more rows"
+  },
+  {
+    "objectID": "materials/decomposition/slides.html#section-23",
+    "href": "materials/decomposition/slides.html#section-23",
+    "title": "Tidy time series & forecasting in R",
+    "section": "",
+    "text": "Decomposing US employment\n\ncomponents(dcmp) |&gt; autoplot()"
+  },
+  {
+    "objectID": "materials/decomposition/slides.html#section-24",
+    "href": "materials/decomposition/slides.html#section-24",
+    "title": "Tidy time series & forecasting in R",
+    "section": "",
+    "text": "Decomposing US employment\n\nus_retail_employment |&gt;\n  autoplot(Employed, color = \"gray\") +\n  autolayer(components(dcmp), trend, color = \"#D55E00\") +\n  labs(y = \"Persons (thousands)\", title = \"Total employment in US retail\")"
+  },
+  {
+    "objectID": "materials/decomposition/slides.html#section-25",
+    "href": "materials/decomposition/slides.html#section-25",
+    "title": "Tidy time series & forecasting in R",
+    "section": "",
+    "text": "Decomposing US employment\n\ncomponents(dcmp) |&gt; gg_subseries(season_year)"
+  },
+  {
+    "objectID": "materials/decomposition/slides.html#section-26",
+    "href": "materials/decomposition/slides.html#section-26",
+    "title": "Tidy time series & forecasting in R",
+    "section": "",
+    "text": "Seasonal adjustment\n\nUseful by-product of decomposition: an easy way to calculate seasonally adjusted data.\nAdditive decomposition: seasonally adjusted data given by \\[y_t - S_t = T_t + R_t\\]\nMultiplicative decomposition: seasonally adjusted data given by \\[y_t / S_t = T_t \\times R_t\\]"
+  },
+  {
+    "objectID": "materials/decomposition/slides.html#section-27",
+    "href": "materials/decomposition/slides.html#section-27",
+    "title": "Tidy time series & forecasting in R",
+    "section": "",
+    "text": "Seasonal adjustment\n\nWe use estimates of \\(S\\) based on past values to seasonally adjust a current value.\nSeasonally adjusted series reflect remainders as well as trend. Therefore they are not “smooth” and “downturns” or “upturns” can be misleading.\nIt is better to use the trend-cycle component to look for turning points."
+  },
+  {
+    "objectID": "materials/decomposition/slides.html#section-28",
+    "href": "materials/decomposition/slides.html#section-28",
+    "title": "Tidy time series & forecasting in R",
+    "section": "",
+    "text": "Decomposing US employment\n\ncomponents(dcmp) |&gt; \n  as_tsibble() |&gt;\n  autoplot(season_adjust)"
+  },
+  {
+    "objectID": "materials/decomposition/slides.html#section-29",
+    "href": "materials/decomposition/slides.html#section-29",
+    "title": "Tidy time series & forecasting in R",
+    "section": "",
+    "text": "Tuning STL decomposition\nIn many cases a decomposition can be improved by adjusting the default model parameters.\n\n\n\n\n\n\nIdeal decompositions\n\n\nA good decomposition will accurately separate the patterns. The window should be chosen such that the components are smooth, but not so smooth that their effects are seen in other components."
+  },
+  {
+    "objectID": "materials/decomposition/slides.html#section-30",
+    "href": "materials/decomposition/slides.html#section-30",
+    "title": "Tidy time series & forecasting in R",
+    "section": "",
+    "text": "Tuning STL decomposition\nThere are many parameters that can adjust an STL decomposition, but the most useful one is the window size.\n\n\n\n\n\n\nComponent windows\n\n\nWindows control how quickly each component adapts to change.\n\ntrend(window = ?) controls wiggliness of trend component.\nseason(window = ?) controls variation on seasonal component.\nseason(window = 'periodic') is equivalent to an infinite window.\n\nA small window will react quickly to changes, and a large window will produce smoother components."
+  },
+  {
+    "objectID": "materials/decomposition/slides.html#section-31",
+    "href": "materials/decomposition/slides.html#section-31",
+    "title": "Tidy time series & forecasting in R",
+    "section": "",
+    "text": "STL decomposition\n\n\n\n\n\n\nYour turn\n\n\n\nProduce the following decomposition\n\ncanadian_gas |&gt;\n  model(STL(Volume ~ season(window=7) + trend(window=11))) |&gt;\n  components() |&gt;\n  autoplot()\n\nWhat happens as you change the values of the two window arguments?\nHow does the seasonal shape change over time? [Hint: Try plotting the seasonal component using gg_season.]\nCan you produce a plausible seasonally adjusted series? [Hint: season_adjust is one of the variables returned by STL.]"
+  },
+  {
+    "objectID": "materials/decomposition/slides.html#thats-all-for-today",
+    "href": "materials/decomposition/slides.html#thats-all-for-today",
+    "title": "Tidy time series & forecasting in R",
+    "section": "⏰ That’s all for today!",
+    "text": "⏰ That’s all for today!\n\n\n\n\n\n\n\n\nNext week…\n\n\n\nSpecifying time series models,\nTraining models on data,\nEvaluating model accuracy,\nForecasting the future!\n\n\n\n\n\n\n\n\n\n\n\nUseful links\n\n\n social.mitchelloharawild.com\n workshop.nectric.com.au/f4sg-um6p/\n mitchelloharawild/workshop-f4sg-um6p"
+  },
+  {
+    "objectID": "materials/decomposition/slides.html#unsplash-credits",
+    "href": "materials/decomposition/slides.html#unsplash-credits",
+    "title": "Tidy time series & forecasting in R",
+    "section": "Unsplash credits",
+    "text": "Unsplash credits\n\n\n\n\n\n\n\nThanks to these Unsplash contributors for their photos"
   }
 ]
