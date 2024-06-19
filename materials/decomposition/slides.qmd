@@ -1,0 +1,997 @@
+---
+from: markdown+emoji
+execute:
+  cache: true
+format:
+  letterbox-revealjs:
+    theme: [default]
+    css: [theme.css, hex.css]
+    progress: false
+    menu: false
+    width: 1280
+    height: 720
+filters:
+  - custom-callouts
+callout-appearance: simple
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+#| include: false
+library(fpp3)
+```
+
+## {}
+
+::: columns
+::: {.column width="40%"}
+:::
+::: {.column width="60%"}
+
+::: {.title data-id="title"}
+Tidy time series analysis and forecasting
+:::
+
+::: {.subtitle data-id="subtitle"}
+Transforming and decomposing time series patterns
+:::
+
+::: {.dateplace}
+20th June 2024 @ UM6P F4SG
+:::
+
+##### Mitchell O'Hara-Wild, Nectric
+
+::: {.callout-link}
+
+## Useful links
+
+![](resources/forum.svg){.icon} [social.mitchelloharawild.com](https://social.mitchelloharawild.com/)
+
+![](resources/projector-screen-outline.svg){.icon} [workshop.nectric.com.au/f4sg-um6p/](https://workshop.nectric.com.au/f4sg-um6p/)
+
+![](resources/github.svg){.icon} [mitchelloharawild/workshop-f4sg-um6p](https://github.com/mitchelloharawild/workshop-f4sg-um6p)
+
+:::
+
+:::
+:::
+
+![](backgrounds/sander-weeteling-KABfjuSOx74-unsplash.jpg){.image-left}
+
+## {}
+
+::: columns
+
+::: {.column width="40%"}
+:::
+
+::: {.column width="60%"}
+
+### Transformations of time series
+
+Transformations use used in time series to:
+
+1. Reveal actual underlying patterns
+2. Simplify the data to make modelling easier
+
+::: {.callout-caution}
+## Your turn
+
+What are some useful transformations that you've seen used on data before?
+
+Can you think of transformations that would be useful for time series?
+:::
+
+
+:::
+
+:::
+
+![](backgrounds/isabela-kronemberger-OegFhZfw6Ok-unsplash.jpg){.image-left}
+
+## {}
+
+::: columns
+
+::: {.column width="60%"}
+
+### Population adjustment
+
+```{r gdp}
+#| echo: true
+global_economy |>
+  filter(Country == "Australia") |>
+  autoplot(GDP)
+```
+
+Useful in comparing populations of different size. Per capita adjustments are commonly used to compare GDP between countries.
+
+:::
+
+:::
+
+![](backgrounds/daryan-shamkhali-FwnImRn57VA-unsplash.jpg){.image-right}
+
+## {}
+
+::: columns
+
+::: {.column width="60%"}
+
+### Population adjustment
+
+```{r gdp-per-capita}
+#| echo: true
+global_economy |>
+  filter(Country == "Australia") |>
+  autoplot(GDP/Population)
+```
+
+::: {.callout-caution}
+## Your turn
+
+Modify the code to look at the GDP of multiple countries with vastly different populations.
+:::
+
+
+:::
+
+:::
+
+![](backgrounds/daryan-shamkhali-FwnImRn57VA-unsplash.jpg){.image-right}
+
+## {}
+
+::: columns
+
+::: {.column width="60%"}
+
+### Inflation adjustment
+
+```{r}
+print_retail <- aus_retail |>
+  filter(Industry == "Newspaper and book retailing") |>
+  group_by(Industry) |>
+  index_by(Year = year(Month)) |>
+  summarise(Turnover = sum(Turnover))
+aus_economy <- filter(tsibbledata::global_economy, Country == "Australia")
+print_retail |>
+  left_join(aus_economy, by = "Year") |>
+  mutate(Adj_turnover = Turnover / CPI) |>
+  pivot_longer(c(Turnover, Adj_turnover),
+    names_to = "Type", values_to = "Turnover"
+  ) |>
+  ggplot(aes(x = Year, y = Turnover)) +
+  geom_line() +
+  facet_grid(vars(Type), scales = "free_y") +
+  labs(
+    x = "Years", y = NULL,
+    title = "Turnover: Australian print media industry"
+  )
+```
+
+Useful in comparing economic series with different rates of inflation. This can be useful in comparing growth of different time series.
+
+:::
+
+:::
+
+![](backgrounds/andre-taissin-5OUMf1Mr5pU-unsplash.jpg){.image-right}
+
+## {}
+
+::: columns
+
+::: {.column width="60%"}
+
+### Calendar days
+
+```{r}
+#| echo: true
+as_tsibble(USAccDeaths) |>
+  gg_season(value)
+```
+
+Sometimes seasonal patterns are driven by simply having different durations of time in each season.
+
+:::
+
+:::
+
+![](backgrounds/jon-tyson-FlHdnPO6dlw-unsplash.jpg){.image-right}
+
+## {}
+
+::: columns
+
+::: {.column width="60%"}
+
+### Calendar days
+
+```{r}
+#| echo: true
+as_tsibble(USAccDeaths) |>
+  gg_season(value/days_in_month(index))
+```
+
+Adjusting to standardise this duration can simplify the pattern.
+
+:::
+
+:::
+
+![](backgrounds/jon-tyson-FlHdnPO6dlw-unsplash.jpg){.image-right}
+
+
+## {}
+
+::: columns
+
+::: {.column width="60%"}
+
+### Calendar days
+
+::: {.callout-caution}
+## Your turn
+
+Adjust for the number of days in each month for the total PBS scripts. How does the seasonal pattern change when the duration of each month is adjusted for?
+
+:::
+
+```{r}
+#| eval: false
+#| echo: true
+PBS |>
+  summarise(Scripts = sum(Scripts))
+```
+
+:::
+
+:::
+
+![](backgrounds/jon-tyson-FlHdnPO6dlw-unsplash.jpg){.image-right}
+
+
+## {}
+
+::: columns
+
+::: {.column width="40%"}
+:::
+
+::: {.column width="60%"}
+
+### Mathematical transformations
+
+If the data show different variation at different levels of the series, then a transformation can be useful.
+
+::: {.callout-tip}
+## Useful transformations
+
+Denote original observations as $y_1,\dots,y_n$ and transformed
+observations as $w_1, \dots, w_n$.
+
+* Square root, $w_t = \sqrt{y_t}$
+* Cube root, $w_t = \sqrt[3]{y_t}$
+* Logarithm, $w_t = \text{log}(y_t)$
+
+Logarithms are particularly useful because they are more interpretable. Changes in a log value are **relative (percent) changes on the original scale**.
+:::
+
+:::
+
+:::
+
+![](backgrounds/charlesdeluvio-zGn2cg9qBvU-unsplash.jpg){.image-left}
+
+
+## {}
+
+::: columns
+
+::: {.column width="40%"}
+:::
+
+::: {.column width="60%"}
+
+### Mathematical transformations
+
+```{r food, echo=TRUE}
+food <- aus_retail |>
+  filter(Industry == "Food retailing") |>
+  summarise(Turnover = sum(Turnover))
+food |> autoplot(Turnover) +
+  labs(y = "Turnover ($AUD)")
+```
+
+::: {.callout-tip}
+
+The growing seasonal variance is known as 'multiplicative' seasonality. It is very common for time series to do this.
+:::
+
+:::
+
+
+:::
+
+![](backgrounds/charlesdeluvio-zGn2cg9qBvU-unsplash.jpg){.image-left}
+
+
+## {}
+
+::: columns
+
+::: {.column width="40%"}
+:::
+
+::: {.column width="60%"}
+
+### Mathematical transformations
+
+```{r logfood, echo=TRUE}
+food |> autoplot(log(Turnover)) +
+  labs(y = "Log-Turnover ($AUD)")
+```
+
+::: {.callout-tip}
+The variance in the seasonality is now regular.
+:::
+
+:::
+
+
+:::
+
+![](backgrounds/charlesdeluvio-zGn2cg9qBvU-unsplash.jpg){.image-left}
+
+
+## {}
+
+::: columns
+
+::: {.column width="40%"}
+:::
+
+::: {.column width="60%"}
+
+### Box-Cox transformations
+
+Each of these transformations is close to a member of the
+family of **Box-Cox transformations**:
+$$w_t = \left\{\begin{array}{ll}
+        \text{log}(y_t),      & \quad \lambda = 0; \\
+        (\text{sign}(y_t)|y_t|^\lambda-1)/\lambda ,         & \quad \lambda \ne 0.
+\end{array}\right.$$
+
+::: {.callout-tip}
+## Common transformations
+
+* $\lambda=1$: (No substantive transformation)
+* $\lambda=\frac{1}{2}$: (Square root plus linear transformation)
+* $\lambda=0$: (Natural logarithm)
+* $\lambda=-1$: (Inverse plus 1)
+:::
+
+:::
+
+
+:::
+
+![](backgrounds/charlesdeluvio-zGn2cg9qBvU-unsplash.jpg){.image-left}
+
+
+
+## {}
+
+::: columns
+
+::: {.column width="40%"}
+:::
+
+::: {.column width="60%"}
+
+### Box-Cox transformations
+
+The $\lambda$ parameter can be automatically selected.
+
+```{r food-lambda, echo=TRUE}
+food |>
+  features(Turnover, features = guerrero)
+```
+
+::: {.fragment .fade-in}
+* This attempts to balance the seasonal fluctuations and random variation across the series.
+* Always check the results.
+* A low value of $\lambda$ can give extremely large prediction intervals.
+:::
+
+:::
+
+
+:::
+
+![](backgrounds/charlesdeluvio-zGn2cg9qBvU-unsplash.jpg){.image-left}
+
+
+## {}
+
+::: columns
+
+::: {.column width="40%"}
+:::
+
+::: {.column width="60%"}
+
+### Box-Cox transformations
+
+```{r food-bc, echo=TRUE,fig.height=3.8}
+food |> autoplot(box_cox(Turnover, 0.0895)) +
+  labs(y = "Box-Cox transformed turnover")
+```
+
+:::
+
+
+:::
+
+![](backgrounds/charlesdeluvio-zGn2cg9qBvU-unsplash.jpg){.image-left}
+
+
+## {}
+
+::: columns
+
+::: {.column width="40%"}
+:::
+
+::: {.column width="60%"}
+
+### Mathematical transformations
+
+::: {.callout-tip}
+## Useful transformations
+
+* Often no transformation needed.
+* Simple transformations are easier to explain and work well enough.
+* Transformations can have very large effect on forecasts.
+* If some data are zero or negative, then use $\lambda>0$.
+* `log1p()` can also be useful for data with zeros.
+* Choosing logs is a simple way to force forecasts to be positive
+* Transformations must be reversed to obtain forecasts on the original scale. (Handled automatically by `fable`.)
+
+:::
+:::
+
+:::
+
+![](backgrounds/charlesdeluvio-zGn2cg9qBvU-unsplash.jpg){.image-left}
+
+## {}
+
+::: columns
+
+::: {.column width="40%"}
+:::
+
+::: {.column width="60%"}
+
+### Transformations
+
+::: {.callout-caution}
+## Your turn
+
+1. For the following series, find an appropriate transformation in order to simplify the patterns.
+
+    * United States GDP from `global_economy`
+    * Slaughter of Victorian “Bulls, bullocks and steers” in `aus_livestock`
+    * Victorian Electricity Demand from `vic_elec`.
+    * Gas production from `aus_production`
+
+2. Why is a Box-Cox transformation unhelpful for the `canadian_gas` data?
+
+:::
+:::
+
+:::
+
+![](backgrounds/charlesdeluvio-zGn2cg9qBvU-unsplash.jpg){.image-left}
+
+## {}
+
+::: columns
+
+::: {.column width="60%"}
+
+### Decomposition
+
+Decomposition is the process of spliting a time series into components, usually consisting of patterns in the data.
+
+This is achieved by modelling the patterns, then extracting the contribution of those patterns in the model.
+
+:::
+
+:::
+
+![](backgrounds/david-pisnoy-46juD4zY1XA-unsplash.jpg){.image-right}
+
+## {}
+
+::: columns
+
+::: {.column width="60%"}
+
+### Decomposition
+
+::: {.callout-note}
+## Additive decompositions
+
+Today we'll learn about one useful type of decomposition: additive decomposition via STL.
+
+It decomposes the:
+
+* Trend-Cycle: aperiodic changes in level over time.
+
+* Seasonality: periodic changes in level due to seasons (e.g., quarter of year, day of week, or hour of day).
+
+* Remainder: unexplained changes not captured by other components.
+
+$$y_t = S_t + T_t + R_t$$
+
+where $y_t$ is the data, $T_t$ is the trend-cycle, $S_t$ is the seasonality, and $R_t$ is the remainder at time $t$.
+:::
+
+:::
+
+:::
+
+![](backgrounds/david-pisnoy-46juD4zY1XA-unsplash.jpg){.image-right}
+
+
+## {}
+
+::: columns
+
+::: {.column width="60%"}
+
+### STL Decomposition
+
+STL is decomposes trend and seasonality using localised regression (loess).
+
+::: {.callout-pro}
+## A lot to like
+
+* Very versatile and robust.
+* Trend and seasonality can change over time.
+* Rate of change (smoothness) controlled by user.
+* Optionally robust to outliers.
+:::
+
+::: {.callout-con}
+## Some limitations
+
+* No trading day or calendar adjustments.
+* **Only decomposes additive patterns.**
+:::
+
+:::
+
+:::
+
+![](backgrounds/david-pisnoy-46juD4zY1XA-unsplash.jpg){.image-right}
+
+## {}
+
+::: columns
+
+::: {.column width="40%"}
+:::
+
+::: {.column width="60%"}
+
+### Decomposing US employment
+
+```{r usretail}
+#| echo: true
+us_retail_employment <- us_employment |>
+  filter(year(Month) >= 1990, Title == "Retail Trade") |>
+  select(-Series_ID)
+us_retail_employment
+```
+
+:::
+
+:::
+
+![](backgrounds/nasa-1lfI7wkGWZ4-unsplash.jpg){.image-left}
+
+
+## {}
+
+::: columns
+
+::: {.column width="40%"}
+:::
+
+::: {.column width="60%"}
+
+### Decomposing US employment
+
+```{r dable1}
+#| echo: true
+us_retail_employment |>
+  autoplot(Employed) +
+  labs(y = "Persons (thousands)", title = "Total employment in US retail")
+```
+
+:::
+
+:::
+
+![](backgrounds/nasa-1lfI7wkGWZ4-unsplash.jpg){.image-left}
+
+## {}
+
+::: columns
+
+::: {.column width="40%"}
+:::
+
+::: {.column width="60%"}
+
+### Decomposing US employment
+
+```{r dable2}
+#| echo: true
+dcmp <- us_retail_employment |>
+  model(stl = STL(Employed))
+dcmp
+```
+
+[This is an STL model fitted to the data. It's stored in a `mable` (model table), and we'll be seeing a lot more of these next week.]{.fragment .fade-in}
+
+:::
+
+:::
+
+![](backgrounds/nasa-1lfI7wkGWZ4-unsplash.jpg){.image-left}
+
+## {}
+
+::: columns
+
+::: {.column width="40%"}
+:::
+
+::: {.column width="60%"}
+
+### Decomposing US employment
+
+```{r dable3}
+#| echo: true
+components(dcmp)
+```
+
+:::
+
+:::
+
+![](backgrounds/nasa-1lfI7wkGWZ4-unsplash.jpg){.image-left}
+
+## {}
+
+::: columns
+
+::: {.column width="40%"}
+:::
+
+::: {.column width="60%"}
+
+### Decomposing US employment
+
+```{r dable4}
+#| echo: true
+#| fig-height: 8
+components(dcmp) |> autoplot()
+```
+
+:::
+
+:::
+
+![](backgrounds/nasa-1lfI7wkGWZ4-unsplash.jpg){.image-left}
+
+
+## {}
+
+::: columns
+
+::: {.column width="40%"}
+:::
+
+::: {.column width="60%"}
+
+### Decomposing US employment
+
+```{r dable5}
+#| echo: true
+#| fig-height: 6
+us_retail_employment |>
+  autoplot(Employed, color = "gray") +
+  autolayer(components(dcmp), trend, color = "#D55E00") +
+  labs(y = "Persons (thousands)", title = "Total employment in US retail")
+```
+
+:::
+
+:::
+
+![](backgrounds/nasa-1lfI7wkGWZ4-unsplash.jpg){.image-left}
+
+## {}
+
+::: columns
+
+::: {.column width="40%"}
+:::
+
+::: {.column width="60%"}
+
+### Decomposing US employment
+
+```{r dable6}
+#| echo: true
+#| fig-height: 6
+components(dcmp) |> gg_subseries(season_year)
+```
+
+:::
+
+:::
+
+![](backgrounds/nasa-1lfI7wkGWZ4-unsplash.jpg){.image-left}
+
+
+## {}
+
+::: columns
+
+::: {.column width="40%"}
+:::
+
+::: {.column width="60%"}
+
+### Seasonal adjustment
+
+*  Useful by-product of decomposition:  an easy way to calculate seasonally adjusted data.
+*  Additive decomposition: seasonally adjusted data given by
+$$y_t - S_t = T_t + R_t$$
+*  Multiplicative decomposition: seasonally adjusted data given by
+$$y_t / S_t = T_t \times R_t$$
+
+:::
+
+:::
+
+![](backgrounds/david-pisnoy-46juD4zY1XA-unsplash.jpg){.image-left}
+
+
+## {}
+
+::: columns
+
+::: {.column width="40%"}
+:::
+
+::: {.column width="60%"}
+
+### Seasonal adjustment
+
+  * We use estimates of $S$ based on past values to seasonally adjust a current value.
+  * Seasonally adjusted series reflect **remainders** as well as **trend**. Therefore they are not "smooth" and "downturns" or "upturns" can be misleading.
+  * It is better to use the trend-cycle component to look for turning points.
+
+
+:::
+
+:::
+
+![](backgrounds/david-pisnoy-46juD4zY1XA-unsplash.jpg){.image-left}
+
+## {}
+
+::: columns
+
+::: {.column width="40%"}
+:::
+
+::: {.column width="60%"}
+
+### Decomposing US employment
+
+```{r dable7}
+#| echo: true
+#| fig-height: 6
+components(dcmp) |> 
+  as_tsibble() |>
+  autoplot(season_adjust)
+```
+
+:::
+
+:::
+
+![](backgrounds/nasa-1lfI7wkGWZ4-unsplash.jpg){.image-left}
+
+
+## {}
+
+::: columns
+
+::: {.column width="40%"}
+:::
+
+::: {.column width="60%"}
+
+### Tuning STL decomposition
+
+In many cases a decomposition can be improved by adjusting the default model parameters.
+
+:::{.callout-tip}
+## Ideal decompositions
+
+A good decomposition will accurately separate the patterns. The window should be chosen such that the components are smooth, but not so smooth that their effects are seen in other components.
+:::
+
+:::
+
+:::
+
+![](backgrounds/david-pisnoy-46juD4zY1XA-unsplash.jpg){.image-left}
+
+
+## {}
+
+::: columns
+
+::: {.column width="40%"}
+:::
+
+::: {.column width="60%"}
+
+### Tuning STL decomposition
+
+There are many parameters that can adjust an STL decomposition, but the most useful one is the window size.
+
+:::{.callout-note}
+## Component windows
+
+Windows control how quickly each component adapts to change.
+
+  *  `trend(window = ?)` controls wiggliness of trend component.
+  *  `season(window = ?)` controls variation on seasonal component.
+  *  `season(window = 'periodic')` is equivalent to an infinite window.
+  
+A small window will react quickly to changes, and a large window will produce smoother components.
+:::
+:::
+
+:::
+
+![](backgrounds/david-pisnoy-46juD4zY1XA-unsplash.jpg){.image-left}
+
+
+## {}
+
+::: columns
+
+::: {.column width="40%"}
+:::
+
+::: {.column width="60%"}
+
+### STL decomposition
+
+::: {.callout-caution}
+## Your turn
+
+
+1. Produce the following decomposition
+
+    \fontsize{9}{11}\sf
+
+    ```r
+    canadian_gas |>
+      model(STL(Volume ~ season(window=7) + trend(window=11))) |>
+      components() |>
+      autoplot()
+    ```
+
+    \fontsize{13}{14}\sf
+
+2. What happens as you change the values of the two `window` arguments?
+
+3. How does the seasonal shape change over time? [Hint: Try plotting the seasonal component using `gg_season`.]
+
+4. Can you produce a plausible seasonally adjusted series? [Hint: `season_adjust` is one of the variables returned by `STL`.]
+:::
+:::
+
+:::
+
+![](backgrounds/david-pisnoy-46juD4zY1XA-unsplash.jpg){.image-left}
+
+
+## :alarm_clock: That's all for today!
+
+::: columns
+::: {.column width="60%"}
+
+
+::: {.callout-tip}
+## Next week...
+
+* Specifying time series models,
+* Training models on data,
+* Evaluating model accuracy,
+* Forecasting the future!
+:::
+
+::: {.callout-link}
+## Useful links
+
+![](resources/forum.svg){.icon} [social.mitchelloharawild.com](https://social.mitchelloharawild.com/)
+
+![](resources/projector-screen-outline.svg){.icon} [workshop.nectric.com.au/f4sg-um6p/](https://workshop.nectric.com.au/f4sg-um6p/)
+
+![](resources/github.svg){.icon} [mitchelloharawild/workshop-f4sg-um6p](https://github.com/mitchelloharawild/workshop-f4sg-um6p)
+:::
+
+:::
+:::
+
+![](backgrounds/sander-weeteling-KABfjuSOx74-unsplash.jpg){.image-right}
+
+<!-- Made with :heart: and [Quarto](https://quarto.org/). -->
+
+
+## Unsplash credits
+
+::: {.callout-unsplash}
+
+## Thanks to these Unsplash contributors for their photos
+
+```{r unsplash}
+#| echo: FALSE
+#| cache: TRUE
+library(httr)
+library(purrr)
+unsplash_pattern <- ".*-(.{11})-unsplash\\.jpg$"
+slides <- readLines("slides.qmd")
+backgrounds <- slides[grepl("../backgrounds/.+?unsplash.jpg", slides)]
+images <- unique(sub(".*\\(backgrounds/(.+?)\\).*", "\\1", backgrounds))
+images <- images[grepl(unsplash_pattern, images)]
+ids <- sub(unsplash_pattern, "\\1", images)
+
+get_unsplash_credit <- function(id) {
+  unsplash_url <- "https://api.unsplash.com/" 
+  my_response <- httr::GET(unsplash_url, path = c("photos", id), query = list(client_id=Sys.getenv("UNSPLASH_ACCESS")))
+  xml <- content(my_response)
+  
+  name <- xml$user$name
+  desc <- xml$description%||%"Photo"
+  sprintf(
+    "* %s: [%s%s](%s)",
+    name,
+    strtrim(desc,60-nchar(name)),
+    if(nchar(desc)>(60-nchar(name))) "..." else "",
+    modify_url("https://unsplash.com/", path = file.path("photos", xml$id))
+  )
+}
+htmltools::includeMarkdown(paste0(map_chr(ids, get_unsplash_credit), collapse = "\n"))
+```
+
+:::
+
+<!-- ## References -->

@@ -1,0 +1,628 @@
+---
+from: markdown+emoji
+execute:
+  cache: true
+format:
+  letterbox-revealjs:
+    theme: [default]
+    css: [theme.css, hex.css]
+    progress: false
+    menu: false
+    width: 1280
+    height: 720
+filters:
+  - custom-callouts
+callout-appearance: simple
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+#| include: false
+library(fpp3)
+```
+
+## {}
+
+::: columns
+::: {.column width="40%"}
+:::
+::: {.column width="60%"}
+
+::: {.title data-id="title"}
+Tidy time series analysis and forecasting
+:::
+
+::: {.subtitle data-id="subtitle"}
+Time series patterns
+:::
+
+::: {.dateplace}
+20th June 2024 @ UM6P F4SG
+:::
+
+##### Mitchell O'Hara-Wild, Nectric
+
+::: {.callout-link}
+
+## Useful links
+
+![](resources/forum.svg){.icon} [social.mitchelloharawild.com](https://social.mitchelloharawild.com/)
+
+![](resources/projector-screen-outline.svg){.icon} [workshop.nectric.com.au/f4sg-um6p/](https://workshop.nectric.com.au/f4sg-um6p/)
+
+![](resources/github.svg){.icon} [mitchelloharawild/workshop-f4sg-um6p](https://github.com/mitchelloharawild/workshop-f4sg-um6p)
+
+:::
+
+:::
+:::
+
+![](backgrounds/sander-weeteling-KABfjuSOx74-unsplash.jpg){.image-left}
+
+## {}
+
+::: columns
+
+::: {.column width="40%"}
+:::
+
+::: {.column width="60%"}
+
+### Visualising time series
+
+Time series visualisation helps us identify *time series patterns*.
+
+These patterns include:
+
+* trends
+* seasonalities
+* cycles
+* covariates
+* events
+
+They also help identify anomalies/outliers.
+
+:::
+
+:::
+:::
+
+![](backgrounds/nathan-dumlao-5Hl5reICevY-unsplash.jpg){.image-left}
+
+
+## {}
+
+::: columns
+
+::: {.column width="40%"}
+:::
+
+::: {.column width="60%"}
+
+::: {.callout}
+## Time plots
+
+The most common time series graphic is the "time plot", created with `autoplot()`.
+
+```{r}
+#| echo: true
+pbs_total <- PBS |>
+  summarise(Scripts = sum(Scripts), Cost = sum(Cost))
+pbs_total |>
+  autoplot(Scripts)
+```
+:::
+
+
+:::
+:::
+
+![](backgrounds/nathan-dumlao-5Hl5reICevY-unsplash.jpg){.image-left}
+
+
+## {}
+
+::: columns
+
+::: {.column width="40%"}
+:::
+
+::: {.column width="60%"}
+
+::: {.callout}
+## Time plots
+
+Time plots show measurements on the y-axis with time on the x-axis. 
+
+They help identify long term patterns such as:
+
+* trends
+* seasonality
+* anomalies
+
+They can help tell the story of the data.
+
+:::
+
+::: {.callout-caution}
+## Your turn
+
+Use `autoplot()` to create time plots for the measurements in `aus_production`.
+
+:::
+
+:::
+:::
+
+![](backgrounds/nathan-dumlao-5Hl5reICevY-unsplash.jpg){.image-left}
+
+
+## {}
+
+::: columns
+
+::: {.column width="60%"}
+
+::: {.callout}
+## Calendar plots
+
+A special type of time plot uses calendars.
+
+```{r}
+#| echo: true
+library(sugrrants)
+vic_elec |>
+  filter(year(Date) == 2014) |>
+  mutate(Hour = hour(Time)) |>
+  frame_calendar(x = Hour, y = Demand, date = Date, nrow = 4) |>
+  ggplot(aes(x = .Hour, y = .Demand, group = Date)) +
+  geom_line() -> p1
+prettify(p1, size = 3, label.padding = unit(0.15, "lines"))
+```
+:::
+
+:::
+:::
+
+![](backgrounds/estee-janssens-zni0zgb3bkQ-unsplash.jpg){.image-right}
+
+
+
+## {}
+
+::: columns
+
+::: {.column width="60%"}
+
+::: {.callout}
+## Calendar plots
+
+Calendar plots are especially useful for identifying daily changes in sub-daily data.
+
+Examples include:
+
+* public holidays
+* notable events.
+
+:::
+
+::: {.callout-caution}
+## Your turn
+
+Create a calendar plot for the number of pedestrians outside Southern Cross Station in 2016.
+
+```{r}
+#| eval: false
+pedestrian |>
+  filter(year(Date) == 2016)
+```
+
+
+:::
+
+:::
+:::
+
+![](backgrounds/estee-janssens-zni0zgb3bkQ-unsplash.jpg){.image-right}
+
+
+
+## {}
+
+::: columns
+
+::: {.column width="40%"}
+:::
+
+::: {.column width="60%"}
+
+::: {.callout}
+## Scatter plots
+
+Cross-sectional visualisation can also be used to better understand time series.
+
+```{r}
+#| echo: true
+pbs_total |>
+  ggplot(aes(x = Scripts, y = Cost)) + 
+  geom_point()
+```
+:::
+
+:::
+
+:::
+:::
+
+![](backgrounds/nasa-1lfI7wkGWZ4-unsplash.jpg){.image-left}
+
+
+
+## {}
+
+::: columns
+
+::: {.column width="40%"}
+:::
+
+::: {.column width="60%"}
+
+::: {.callout}
+## Scatter plots
+
+Scatter plots for time series don't use time in any way for the visualisation. It compares two measurements, one on the x and y-axis.
+
+They help identify relationships between variables, such as:
+
+* linearity
+* direction
+* strength
+
+:::
+
+::: {.callout-caution}
+## Your turn
+
+Use scatter plots to explore the relationships between measurements in `aus_production`.
+
+:::
+
+:::
+
+:::
+:::
+
+![](backgrounds/nasa-1lfI7wkGWZ4-unsplash.jpg){.image-left}
+
+
+
+
+## {}
+
+::: columns
+
+::: {.column width="60%"}
+
+::: {.callout}
+## Seasonal plots
+
+The `gg_season()` plots help identify peaks and troughs in seasonal patterns.
+
+```{r}
+#| echo: true
+pbs_total |>
+  gg_season(Scripts)
+```
+:::
+
+:::
+:::
+
+![](backgrounds/david-becker-crs2vlkSe98-unsplash.jpg){.image-right}
+
+
+## {}
+
+::: columns
+
+::: {.column width="60%"}
+
+::: {.callout}
+## Seasonal plots
+
+Seasonal plots show measurements on the y-axis with seasons on the x-axis and seasonal periods as colour.
+
+They help identify details in seasonal patterns such as:
+
+* peaks
+* troughs
+
+:::
+
+::: {.callout-caution}
+## Your turn
+
+Use `gg_season()` to identify the nature of seasonal patterns in `aus_production`.
+
+:::
+
+:::
+:::
+
+![](backgrounds/david-becker-crs2vlkSe98-unsplash.jpg){.image-right}
+
+
+## {}
+
+::: columns
+
+::: {.column width="40%"}
+:::
+
+::: {.column width="60%"}
+
+::: {.callout}
+## Seasonal sub-series plots
+
+The `gg_subseries()` plots help identify changes in seasonal patterns.
+
+```{r}
+#| echo: true
+pbs_total |>
+  gg_subseries(Scripts)
+```
+:::
+
+:::
+
+:::
+:::
+
+![](backgrounds/nicole-avagliano-TeLjs2pL5fA-unsplash.jpg){.image-left}
+
+
+## {}
+
+::: columns
+
+::: {.column width="40%"}
+:::
+
+::: {.column width="60%"}
+
+::: {.callout}
+## Seasonal sub-series plots
+
+Seasonal plots show measurements on the y-axis with seasonal periods on the x-axis faceted by seasons. The blue line corresponds to the seasonal mean.
+
+They help compare seasons, which is especially useful to see if and how the seasonal pattern changes over time.
+
+:::
+
+::: {.callout-caution}
+## Your turn
+
+Use `gg_subseries()` to explore the seasonal consistency in `aus_production`.
+
+:::
+
+:::
+:::
+
+![](backgrounds/nicole-avagliano-TeLjs2pL5fA-unsplash.jpg){.image-left}
+
+
+## {}
+
+::: columns
+
+::: {.column width="40%"}
+:::
+
+::: {.column width="60%"}
+
+::: {.callout}
+## ACF plots
+
+The `ACF() |> autoplot()` plots identify all temporal patterns using autocorrelations.
+
+```{r}
+#| echo: true
+pbs_total |>
+  ACF(Scripts) |> 
+  autoplot()
+```
+:::
+
+:::
+
+:::
+:::
+
+![](backgrounds/amjd-rdwan--MDJDYKQz6E-unsplash.jpg){.image-left}
+
+
+
+## {}
+
+::: columns
+
+::: {.column width="40%"}
+:::
+
+::: {.column width="60%"}
+
+::: {.callout}
+## ACF plots
+
+
+ACF plots show autocorrelations on the y-axis, with the ACF lag on the x-axis.
+
+The auto-correlation at lag $k$ is:
+
+$$r_k = \text{cor}(y_t, y_{t-k}) = \dfrac{\sum(y_t - \bar{y})(y_{t-k} - \bar{y})}{\sum(y_t - \bar{y})^2}$$
+
+ACF plots show:
+
+* trend and unit roots via slow decay
+* seasonality with peaks at seasonal periods
+* cycles with increased correlation at cycle durations
+
+
+:::
+
+::: {.callout-caution}
+## Your turn
+
+Use `ACF()` and `autoplot()` to identify patterns in `aus_production`.
+
+:::
+:::
+
+:::
+:::
+
+![](backgrounds/amjd-rdwan--MDJDYKQz6E-unsplash.jpg){.image-left}
+
+## Seasonal or Cyclical?
+
+These common patterns are commonly confused, can you tell them apart?
+
+```{r}
+library(patchwork)
+((autoplot(as_tsibble(USAccDeaths), value)+ylab(NULL))/autoplot(ACF(as_tsibble(USAccDeaths), value))) | ((autoplot(pelt, Lynx)+ylab(NULL))/autoplot(ACF(pelt, Lynx)))
+```
+
+
+## {}
+
+::: columns
+
+::: {.column width="40%"}
+:::
+
+::: {.column width="60%"}
+
+### White noise
+
+```{r, fig.height=3.3}
+#| echo: true
+wn <- tsibble(t = seq(36), y = rnorm(36), index = t)
+wn |> autoplot(y)
+```
+
+::: {.callout-note}
+## Definition
+
+White noise data is uncorrelated across time with zero mean and constant variance.
+
+(Technically, we require independence as well.)
+
+:::
+
+:::
+
+:::
+:::
+
+![](backgrounds/amjd-rdwan--MDJDYKQz6E-unsplash.jpg){.image-left}
+
+
+
+## {}
+
+::: columns
+
+::: {.column width="40%"}
+:::
+
+::: {.column width="60%"}
+
+### White noise
+
+The ACF is a useful way to identify if data is white noise. The blue dashed lines indicate 95% significance of the autocorrelation.
+
+```{r, fig.height=3.3}
+#| echo: true
+wn |> ACF(y) |> autoplot()
+```
+
+:::
+
+:::
+:::
+
+![](backgrounds/amjd-rdwan--MDJDYKQz6E-unsplash.jpg){.image-left}
+
+
+## :alarm_clock: Time for a break!
+
+::: columns
+::: {.column width="60%"}
+
+
+::: {.callout-tip}
+## Up next...
+
+* Simplifying patterns with transformations,
+* Decomposing data to separate patterns.
+:::
+
+::: {.callout-link}
+## Useful links
+
+![](resources/forum.svg){.icon} [social.mitchelloharawild.com](https://social.mitchelloharawild.com/)
+
+![](resources/projector-screen-outline.svg){.icon} [workshop.nectric.com.au/f4sg-um6p/](https://workshop.nectric.com.au/f4sg-um6p/)
+
+![](resources/github.svg){.icon} [mitchelloharawild/workshop-f4sg-um6p](https://github.com/mitchelloharawild/workshop-f4sg-um6p)
+:::
+
+:::
+:::
+
+![](backgrounds/sander-weeteling-KABfjuSOx74-unsplash.jpg){.image-right}
+
+<!-- Made with :heart: and [Quarto](https://quarto.org/). -->
+
+
+## Unsplash credits
+
+::: {.callout-unsplash}
+
+## Thanks to these Unsplash contributors for their photos
+
+```{r unsplash}
+#| echo: FALSE
+#| cache: TRUE
+library(httr)
+library(purrr)
+unsplash_pattern <- ".*-(.{11})-unsplash\\.jpg$"
+slides <- readLines("slides.qmd")
+backgrounds <- slides[grepl("../backgrounds/.+?unsplash.jpg", slides)]
+images <- unique(sub(".*\\(backgrounds/(.+?)\\).*", "\\1", backgrounds))
+images <- images[grepl(unsplash_pattern, images)]
+ids <- sub(unsplash_pattern, "\\1", images)
+
+get_unsplash_credit <- function(id) {
+  unsplash_url <- "https://api.unsplash.com/" 
+  my_response <- httr::GET(unsplash_url, path = c("photos", id), query = list(client_id=Sys.getenv("UNSPLASH_ACCESS")))
+  xml <- content(my_response)
+  
+  name <- xml$user$name
+  desc <- xml$description%||%"Photo"
+  sprintf(
+    "* %s: [%s%s](%s)",
+    name,
+    strtrim(desc,60-nchar(name)),
+    if(nchar(desc)>(60-nchar(name))) "..." else "",
+    modify_url("https://unsplash.com/", path = file.path("photos", xml$id))
+  )
+}
+htmltools::includeMarkdown(paste0(map_chr(ids, get_unsplash_credit), collapse = "\n"))
+```
+
+:::
+
+<!-- ## References -->
