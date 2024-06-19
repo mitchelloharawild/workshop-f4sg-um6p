@@ -3,6 +3,8 @@ project:
   resources:
     - "images/twitter-card.png"
     - "materials/*.pdf"
+    - "data/*"
+    - "lab.R"
   render:
     - "*.qmd"
     - "!materials"
