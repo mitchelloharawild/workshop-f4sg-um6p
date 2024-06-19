@@ -51,30 +51,14 @@ website:
       - icon: github
         href: https://github.com/mitchelloharawild/workshop-f4sg-um6p
     left:
-      - text: Sessions
-        menu: 
-          - text: Background
-            href: sessions/day1/00_intro.qmd
-          - text: Introduction to tsibbles
-            href: sessions/day1/01_tsibble.qmd
-          - text: Time series graphics
-            href: sessions/day1/02_graphics.qmd
-          - text: Transformations
-            href: sessions/day1/03_transformations.qmd
-          - text: Seasonality and trends
-            href: sessions/day1/04_decomposition.qmd
-          - text: Time series features
-            href: sessions/day1/05_features.qmd
-          - text: Introduction to forecasting
-            href: sessions/day2/06_forecasting.qmd
-          - text: Exponential smoothing
-            href: sessions/day2/07_ets.qmd
-          - text: ARIMA models
-            href: sessions/day2/08_arima.qmd
-          - text: Dynamic regression
-            href: sessions/day2/09_dynreg.qmd
-          - text: Hierarchical forecasting
-            href: sessions/day2/10_hierarchical.qmd
+      - text: Slides
+        menu:
+          - text: Time series data and manipulation
+            href: materials/data/slides.qmd
+          - text: Time series patterns and visualisation
+            href: materials/graphics/slides.qmd
+          - text: Transformations and decomposition
+            href: materials/decomposition/slides.qmd
       - href: schedule.qmd
 
 format:
