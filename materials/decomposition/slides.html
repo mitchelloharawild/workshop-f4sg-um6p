@@ -10,9 +10,9 @@
 <link href="../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <link href="../../site_libs/quarto-contrib/custom-callouts-0.1.0/custom-callouts.scss" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.553">
+  <meta name="generator" content="quarto-1.5.47">
 
-  <title>Tidy time series &amp; forecasting in R</title>
+  <title>Tidy time series &amp; forecasting in R – slides</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -43,7 +43,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -71,7 +71,7 @@
     code span.at { color: #657422; } /* Attribute */
     code span.bn { color: #ad0000; } /* BaseN */
     code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
     code span.ch { color: #20794d; } /* Char */
     code span.cn { color: #8f5902; } /* Constant */
     code span.co { color: #5e5e5e; } /* Comment */
@@ -85,7 +85,7 @@
     code span.fu { color: #4758ab; } /* Function */
     code span.im { color: #00769e; } /* Import */
     code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; } /* Keyword */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
     code span.op { color: #5e5e5e; } /* Operator */
     code span.ot { color: #003b4f; } /* Other */
     code span.pp { color: #ad0000; } /* Preprocessor */
@@ -97,7 +97,6 @@
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto.css">
-  <link rel="stylesheet" href="theme.scss">
   <link rel="stylesheet" href="theme.css">
   <link rel="stylesheet" href="hex.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -434,8 +433,7 @@
 </div>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 <p><img data-src="backgrounds/sander-weeteling-KABfjuSOx74-unsplash.jpg" class="image-left"></p>
 </section>
 <section id="section-1" class="slide level2">
@@ -464,8 +462,7 @@
 </div>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 
 <img data-src="backgrounds/isabela-kronemberger-OegFhZfw6Ok-unsplash.jpg" class="image-left r-stretch"></section>
 <section id="section-2" class="slide level2">
@@ -486,8 +483,7 @@
 </div>
 </div>
 <p>Useful in comparing populations of different size. Per capita adjustments are commonly used to compare GDP between countries.</p>
-</div>
-</div>
+</div></div>
 <p><img data-src="backgrounds/daryan-shamkhali-FwnImRn57VA-unsplash.jpg" class="image-right"></p>
 </section>
 <section id="section-3" class="slide level2">
@@ -520,8 +516,7 @@
 </div>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 <p><img data-src="backgrounds/daryan-shamkhali-FwnImRn57VA-unsplash.jpg" class="image-right"></p>
 </section>
 <section id="section-4" class="slide level2">
@@ -539,8 +534,7 @@
 </div>
 </div>
 <p>Useful in comparing economic series with different rates of inflation. This can be useful in comparing growth of different time series.</p>
-</div>
-</div>
+</div></div>
 <p><img data-src="backgrounds/andre-taissin-5OUMf1Mr5pU-unsplash.jpg" class="image-right"></p>
 </section>
 <section id="section-5" class="slide level2">
@@ -560,8 +554,7 @@
 </div>
 </div>
 <p>Sometimes seasonal patterns are driven by simply having different durations of time in each season.</p>
-</div>
-</div>
+</div></div>
 <p><img data-src="backgrounds/jon-tyson-FlHdnPO6dlw-unsplash.jpg" class="image-right"></p>
 </section>
 <section id="section-6" class="slide level2">
@@ -581,8 +574,7 @@
 </div>
 </div>
 <p>Adjusting to standardise this duration can simplify the pattern.</p>
-</div>
-</div>
+</div></div>
 <p><img data-src="backgrounds/jon-tyson-FlHdnPO6dlw-unsplash.jpg" class="image-right"></p>
 </section>
 <section id="section-7" class="slide level2">
@@ -607,8 +599,7 @@
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>PBS <span class="sc">|&gt;</span></span>
 <span id="cb5-2"><a></a>  <span class="fu">summarise</span>(<span class="at">Scripts =</span> <span class="fu">sum</span>(Scripts))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-</div>
+</div></div>
 
 <img data-src="backgrounds/jon-tyson-FlHdnPO6dlw-unsplash.jpg" class="image-right r-stretch"></section>
 <section id="section-8" class="slide level2">
@@ -638,8 +629,7 @@
 </div>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 
 <img data-src="backgrounds/charlesdeluvio-zGn2cg9qBvU-unsplash.jpg" class="image-left r-stretch"></section>
 <section id="section-9" class="slide level2">
@@ -673,8 +663,7 @@
 </div>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 <p><img data-src="backgrounds/charlesdeluvio-zGn2cg9qBvU-unsplash.jpg" class="image-left"></p>
 </section>
 <section id="section-10" class="slide level2">
@@ -705,8 +694,7 @@
 </div>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 <p><img data-src="backgrounds/charlesdeluvio-zGn2cg9qBvU-unsplash.jpg" class="image-left"></p>
 </section>
 <section id="section-11" class="slide level2">
@@ -738,8 +726,7 @@
 </div>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 
 <img data-src="backgrounds/charlesdeluvio-zGn2cg9qBvU-unsplash.jpg" class="image-left r-stretch"></section>
 <section id="section-12" class="slide level2">
@@ -767,8 +754,7 @@
 <li>A low value of <span class="math inline">\(\lambda\)</span> can give extremely large prediction intervals.</li>
 </ul>
 </div>
-</div>
-</div>
+</div></div>
 
 <img data-src="backgrounds/charlesdeluvio-zGn2cg9qBvU-unsplash.jpg" class="image-left r-stretch"></section>
 <section id="section-13" class="slide level2">
@@ -789,8 +775,7 @@
 </div>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 <p><img data-src="backgrounds/charlesdeluvio-zGn2cg9qBvU-unsplash.jpg" class="image-left"></p>
 </section>
 <section id="section-14" class="slide level2">
@@ -821,8 +806,7 @@
 </div>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 
 <img data-src="backgrounds/charlesdeluvio-zGn2cg9qBvU-unsplash.jpg" class="image-left r-stretch"></section>
 <section id="section-15" class="slide level2">
@@ -854,8 +838,7 @@
 </div>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 
 <img data-src="backgrounds/charlesdeluvio-zGn2cg9qBvU-unsplash.jpg" class="image-left r-stretch"></section>
 <section id="section-16" class="slide level2">
@@ -865,8 +848,7 @@
 <h3 id="decomposition">Decomposition</h3>
 <p>Decomposition is the process of spliting a time series into components, usually consisting of patterns in the data.</p>
 <p>This is achieved by modelling the patterns, then extracting the contribution of those patterns in the model.</p>
-</div>
-</div>
+</div></div>
 
 <img data-src="backgrounds/david-pisnoy-46juD4zY1XA-unsplash.jpg" class="image-right r-stretch"></section>
 <section id="section-17" class="slide level2">
@@ -895,8 +877,7 @@
 </div>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 
 <img data-src="backgrounds/david-pisnoy-46juD4zY1XA-unsplash.jpg" class="image-right r-stretch"></section>
 <section id="section-18" class="slide level2">
@@ -943,8 +924,7 @@
 </div>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 
 <img data-src="backgrounds/david-pisnoy-46juD4zY1XA-unsplash.jpg" class="image-right r-stretch"></section>
 <section id="section-19" class="slide level2">
@@ -976,8 +956,7 @@
 # i 347 more rows</code></pre>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 
 <img data-src="backgrounds/nasa-1lfI7wkGWZ4-unsplash.jpg" class="image-left r-stretch"></section>
 <section id="section-20" class="slide level2">
@@ -999,8 +978,7 @@
 </div>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 <p><img data-src="backgrounds/nasa-1lfI7wkGWZ4-unsplash.jpg" class="image-left"></p>
 </section>
 <section id="section-21" class="slide level2">
@@ -1022,8 +1000,7 @@
 </div>
 </div>
 <p><span class="fragment fade-in">This is an STL model fitted to the data. It’s stored in a <code>mable</code> (model table), and we’ll be seeing a lot more of these next week.</span></p>
-</div>
-</div>
+</div></div>
 
 <img data-src="backgrounds/nasa-1lfI7wkGWZ4-unsplash.jpg" class="image-left r-stretch"></section>
 <section id="section-22" class="slide level2">
@@ -1054,8 +1031,7 @@
 # i 347 more rows</code></pre>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 
 <img data-src="backgrounds/nasa-1lfI7wkGWZ4-unsplash.jpg" class="image-left r-stretch"></section>
 <section id="section-23" class="slide level2">
@@ -1075,8 +1051,7 @@
 </div>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 <p><img data-src="backgrounds/nasa-1lfI7wkGWZ4-unsplash.jpg" class="image-left"></p>
 </section>
 <section id="section-24" class="slide level2">
@@ -1099,8 +1074,7 @@
 </div>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 <p><img data-src="backgrounds/nasa-1lfI7wkGWZ4-unsplash.jpg" class="image-left"></p>
 </section>
 <section id="section-25" class="slide level2">
@@ -1120,8 +1094,7 @@
 </div>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 <p><img data-src="backgrounds/nasa-1lfI7wkGWZ4-unsplash.jpg" class="image-left"></p>
 </section>
 <section id="section-26" class="slide level2">
@@ -1136,8 +1109,7 @@
 <li>Additive decomposition: seasonally adjusted data given by <span class="math display">\[y_t - S_t = T_t + R_t\]</span></li>
 <li>Multiplicative decomposition: seasonally adjusted data given by <span class="math display">\[y_t / S_t = T_t \times R_t\]</span></li>
 </ul>
-</div>
-</div>
+</div></div>
 
 <img data-src="backgrounds/david-pisnoy-46juD4zY1XA-unsplash.jpg" class="image-left r-stretch"></section>
 <section id="section-27" class="slide level2">
@@ -1152,8 +1124,7 @@
 <li>Seasonally adjusted series reflect <strong>remainders</strong> as well as <strong>trend</strong>. Therefore they are not “smooth” and “downturns” or “upturns” can be misleading.</li>
 <li>It is better to use the trend-cycle component to look for turning points.</li>
 </ul>
-</div>
-</div>
+</div></div>
 
 <img data-src="backgrounds/david-pisnoy-46juD4zY1XA-unsplash.jpg" class="image-left r-stretch"></section>
 <section id="section-28" class="slide level2">
@@ -1175,8 +1146,7 @@
 </div>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 <p><img data-src="backgrounds/nasa-1lfI7wkGWZ4-unsplash.jpg" class="image-left"></p>
 </section>
 <section id="section-29" class="slide level2">
@@ -1200,8 +1170,7 @@
 </div>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 
 <img data-src="backgrounds/david-pisnoy-46juD4zY1XA-unsplash.jpg" class="image-left r-stretch"></section>
 <section id="section-30" class="slide level2">
@@ -1231,8 +1200,7 @@
 </div>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 
 <img data-src="backgrounds/david-pisnoy-46juD4zY1XA-unsplash.jpg" class="image-left r-stretch"></section>
 <section id="section-31" class="slide level2">
@@ -1266,8 +1234,7 @@
 </div>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 
 <img data-src="backgrounds/david-pisnoy-46juD4zY1XA-unsplash.jpg" class="image-left r-stretch"></section>
 <section id="thats-all-for-today" class="slide level2">
@@ -1309,8 +1276,7 @@
 </div>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 <p><img data-src="backgrounds/sander-weeteling-KABfjuSOx74-unsplash.jpg" class="image-right"></p>
 <!-- Made with :heart: and [Quarto](https://quarto.org/). -->
 </section>
@@ -1759,18 +1725,7 @@
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -1802,7 +1757,29 @@
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
         var mailtoRegex = new RegExp(/^mailto:/);
           var filterRegex = new RegExp("https:\/\/workshop\.nectric\.com\.au\/f4sg-um6p");
@@ -1810,7 +1787,7 @@
             return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }
         // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
         for (var i=0; i<links.length; i++) {
           const link = links[i];
           if (!isInternal(link.href)) {

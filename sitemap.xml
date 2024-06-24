@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://workshop.nectric.com.au/f4sg-um6p/materials/graphics/slides.html</loc>
-    <lastmod>2024-06-19T21:06:49.803Z</lastmod>
+    <loc>https://workshop.nectric.com.au/f4sg-um6p/materials/accuracy/slides.html</loc>
+    <lastmod>2024-06-24T07:53:41.548Z</lastmod>
+  </url>
+  <url>
+    <loc>https://workshop.nectric.com.au/f4sg-um6p/materials/modelling/slides.html</loc>
+    <lastmod>2024-06-24T07:53:48.748Z</lastmod>
   </url>
   <url>
     <loc>https://workshop.nectric.com.au/f4sg-um6p/materials/data/slides.html</loc>
@@ -10,18 +14,22 @@
   </url>
   <url>
     <loc>https://workshop.nectric.com.au/f4sg-um6p/index.html</loc>
-    <lastmod>2024-06-19T22:49:13.250Z</lastmod>
+    <lastmod>2024-06-24T06:31:45.072Z</lastmod>
   </url>
   <url>
     <loc>https://workshop.nectric.com.au/f4sg-um6p/feedback.html</loc>
-    <lastmod>2024-06-19T15:58:54.952Z</lastmod>
+    <lastmod>2024-06-24T06:31:45.068Z</lastmod>
   </url>
   <url>
     <loc>https://workshop.nectric.com.au/f4sg-um6p/license.html</loc>
-    <lastmod>2024-06-19T15:58:54.952Z</lastmod>
+    <lastmod>2024-06-24T06:31:45.072Z</lastmod>
+  </url>
+  <url>
+    <loc>https://workshop.nectric.com.au/f4sg-um6p/materials/graphics/slides.html</loc>
+    <lastmod>2024-06-19T21:06:49.803Z</lastmod>
   </url>
   <url>
     <loc>https://workshop.nectric.com.au/f4sg-um6p/materials/decomposition/slides.html</loc>
-    <lastmod>2024-06-19T22:44:51.864Z</lastmod>
+    <lastmod>2024-06-24T06:37:05.081Z</lastmod>
   </url>
 </urlset>
