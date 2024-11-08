@@ -2,14 +2,11 @@ project:
   type: website
   resources:
     - "images/twitter-card.png"
-    - "materials/*.pdf"
     - "data/*"
     - "lab.R"
   render:
     - "*.qmd"
-    - "!materials"
     - "!README.Rmd"
-  pre-render: zip.R
 
 website:
   page-navigation: true
@@ -42,8 +39,6 @@ website:
         menu: 
           - text: Everything
             href: 'https://github.com/mitchelloharawild/workshop-f4sg-um6p/archive/refs/heads/main.zip'
-          - text: Slides
-            href: 'slides.zip'
           # - text: Lab sessions
           #   href: 'labs.zip'
       - icon: file-certificate
@@ -59,7 +54,10 @@ website:
             href: materials/graphics/slides.qmd
           - text: Transformations and decomposition
             href: materials/decomposition/slides.qmd
-      - href: schedule.qmd
+          - text: Modelling and forecasting
+            href: materials/modelling/slides.qmd
+          - text: Accuracy evaluation
+            href: materials/accuracy/slides.qmd
 
 format:
   html:
